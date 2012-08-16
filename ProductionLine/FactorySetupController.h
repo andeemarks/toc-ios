@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ProductionLineFirstViewController : UIViewController
+@interface FactorySetupController : UIViewController
 
 @property (nonatomic) NSInteger inventorySize;
 @property (nonatomic) NSInteger stationCount;

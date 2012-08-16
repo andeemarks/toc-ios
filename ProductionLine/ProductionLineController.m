@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "ProductionLineSecondViewController.h"
+#import "ProductionLineController.h"
 
-@interface ProductionLineSecondViewController ()
+@interface ProductionLineController ()
 
 - (void)retreiveSetup;
 @property (weak, nonatomic) IBOutlet UILabel *inventorySizeLabel;
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation ProductionLineSecondViewController
+@implementation ProductionLineController
 @synthesize inventorySizeLabel;
 @synthesize stationCountLabel;
 @synthesize stationTable;

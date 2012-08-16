@@ -6,9 +6,10 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "ProductionLineFirstViewController.h"
+#import "FactorySetupController.h"
+#import "StationCountPickerController.h"
 
-@interface ProductionLineFirstViewController ()
+@interface FactorySetupController ()
 
 - (IBAction)inventorySizeChanged:(UISlider *)sender;
 @property (weak, nonatomic) IBOutlet UISlider *inventorySizeSlider;
@@ -22,7 +23,7 @@
 
 @end
 
-@implementation ProductionLineFirstViewController
+@implementation FactorySetupController
 
 @synthesize stationCountSlider;
 @synthesize stationCountLabel;
@@ -30,6 +31,16 @@
 @synthesize inventorySizeSlider;
 @synthesize inventorySizeLabel;
 @synthesize inventorySize;
+
+- (void)applicationDidFinishLaunching:(UIApplication *)application {
+    
+    StationCountPickerController *stationCountPicker = [[StationCountPickerController alloc] initWithNibName:@"PickerView" bundle:[NSBundle mainBundle]];
+    
+    [window addSubview:stationCountPicker.view];
+    
+    // Override point for customization after application launch
+    [window makeKeyAndVisible];
+}
 
 - (void)viewDidLoad
 {
