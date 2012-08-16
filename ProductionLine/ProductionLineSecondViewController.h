@@ -10,4 +10,7 @@
 
 @interface ProductionLineSecondViewController : UIViewController
 
+@property (nonatomic) NSInteger inventorySize;
+@property (nonatomic) NSInteger stationCount;
+
 @end
