@@ -37,6 +37,13 @@
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [self persistSetup];
+}
+
 - (void)viewDidUnload
 {
     [self setInventorySizeSlider:nil];
@@ -52,23 +59,31 @@
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
-- (IBAction)inventorySizeChanged:(UISlider *)sender {
+- (void)captureInventorySize {
     self.inventorySize = (int) inventorySizeSlider.value;
     
     self.inventorySizeLabel.text = [NSString stringWithFormat: @"%i", self.inventorySize];
-
-    [self persistSetup];
 }
-- (IBAction)stationCountChanged:(UISlider *)sender {
+
+- (IBAction)inventorySizeChanged:(UISlider *)sender {
+    [self captureInventorySize];
+}
+
+- (void)captureStationCount {
     self.stationCount = (int) stationCountSlider.value;
     
     self.stationCountLabel.text = [NSString stringWithFormat: @"%i", self.stationCount];
+}
 
-    [self persistSetup];
+- (IBAction)stationCountChanged:(UISlider *)sender {
+    [self captureStationCount];
 }
 
 - (void)persistSetup 
 {
+    [self captureInventorySize];
+    [self captureStationCount];
+
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
 
     [prefs setInteger:self.stationCount forKey:@"stationCount"];
