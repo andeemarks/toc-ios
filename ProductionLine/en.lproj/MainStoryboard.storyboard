@@ -38,7 +38,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Number of Stations" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Ck3-1J-5vr">
-                                <rect key="frame" x="20" y="255" width="130" height="21"/>
+                                <rect key="frame" x="20" y="80" width="130" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -51,23 +51,13 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="1" maxValue="6" id="zwR-CK-gLU">
-                                <rect key="frame" x="18" y="284" width="284" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="stationCountChanged:" destination="2" eventType="valueChanged" id="lsp-CH-KIB"/>
-                                </connections>
-                            </slider>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="ZDV-GI-ir5">
-                                <rect key="frame" x="258" y="255" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <pickerView contentMode="scaleToFill" id="QzL-jh-UaK">
-                                <rect key="frame" x="224" y="116" width="76" height="216"/>
+                                <rect key="frame" x="20" y="109" width="55" height="216"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="2" id="5T2-mD-4Do"/>
+                                    <outlet property="delegate" destination="2" id="80L-pw-jcf"/>
+                                </connections>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -76,8 +66,7 @@
                     <connections>
                         <outlet property="inventorySizeLabel" destination="MAq-Tb-l4C" id="ME9-hC-zBb"/>
                         <outlet property="inventorySizeSlider" destination="EuD-8u-cfI" id="3R7-Hb-RD2"/>
-                        <outlet property="stationCountLabel" destination="ZDV-GI-ir5" id="Ni7-nX-p1k"/>
-                        <outlet property="stationCountSlider" destination="zwR-CK-gLU" id="Xxc-ZV-Ne8"/>
+                        <outlet property="pickerView" destination="QzL-jh-UaK" id="v6v-YL-n7m"/>
                     </connections>
                 </viewController>
             </objects>
@@ -174,11 +163,9 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FactorySetupController.h"/>
             <relationships>
                 <relationship kind="action" name="inventorySizeChanged:" candidateClass="UISlider"/>
-                <relationship kind="action" name="stationCountChanged:" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="inventorySizeLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="inventorySizeSlider" candidateClass="UISlider"/>
-                <relationship kind="outlet" name="stationCountLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="stationCountSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="pickerView" candidateClass="UIPickerView"/>
             </relationships>
         </class>
         <class className="ProductionLineController" superclassName="UIViewController">

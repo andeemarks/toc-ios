@@ -7,17 +7,13 @@
 //
 
 #import "FactorySetupController.h"
-#import "StationCountPickerController.h"
 
 @interface FactorySetupController ()
+@property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 
 - (IBAction)inventorySizeChanged:(UISlider *)sender;
 @property (weak, nonatomic) IBOutlet UISlider *inventorySizeSlider;
 @property (weak, nonatomic) IBOutlet UILabel *inventorySizeLabel;
-
-- (IBAction)stationCountChanged:(UISlider *)sender;
-@property (weak, nonatomic) IBOutlet UISlider *stationCountSlider;
-@property (weak, nonatomic) IBOutlet UILabel *stationCountLabel;
 
 - (void)persistSetup;
 
@@ -25,29 +21,42 @@
 
 @implementation FactorySetupController
 
-@synthesize stationCountSlider;
-@synthesize stationCountLabel;
 @synthesize stationCount;
 @synthesize inventorySizeSlider;
 @synthesize inventorySizeLabel;
 @synthesize inventorySize;
-
-- (void)applicationDidFinishLaunching:(UIApplication *)application {
-    
-    StationCountPickerController *stationCountPicker = [[StationCountPickerController alloc] initWithNibName:@"PickerView" bundle:[NSBundle mainBundle]];
-    
-    [window addSubview:stationCountPicker.view];
-    
-    // Override point for customization after application launch
-    [window makeKeyAndVisible];
-}
+@synthesize pickerView;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    values = [[NSMutableArray alloc] init];
+    [values addObject:[NSNumber numberWithInteger:1]];
+    [values addObject:[NSNumber numberWithInteger:2]];
+    [values addObject:[NSNumber numberWithInteger:3]];
+    [values addObject:[NSNumber numberWithInteger:4]];
+    [values addObject:[NSNumber numberWithInteger:5]];
+    [values addObject:[NSNumber numberWithInteger:6]];
 }
 
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView {
+    
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return 6;
+}
+
+- (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return [[values objectAtIndex:row] stringValue];
+}
+
+- (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    
+    self.stationCount = [[values objectAtIndex:row] integerValue];
+}
 
 - (void)viewDidDisappear:(BOOL)animated
 {
@@ -59,8 +68,7 @@
 {
     [self setInventorySizeSlider:nil];
     [self setInventorySizeLabel:nil];
-    [self setStationCountSlider:nil];
-    [self setStationCountLabel:nil];
+    [self setPickerView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -80,20 +88,9 @@
     [self captureInventorySize];
 }
 
-- (void)captureStationCount {
-    self.stationCount = (int) stationCountSlider.value;
-    
-    self.stationCountLabel.text = [NSString stringWithFormat: @"%i", self.stationCount];
-}
-
-- (IBAction)stationCountChanged:(UISlider *)sender {
-    [self captureStationCount];
-}
-
 - (void)persistSetup 
 {
     [self captureInventorySize];
-    [self captureStationCount];
 
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
 
