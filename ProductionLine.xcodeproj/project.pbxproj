@@ -20,6 +20,10 @@
 		8D27B73015DCDBEA00C6C8D8 /* ProductionLineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D27B72F15DCDBEA00C6C8D8 /* ProductionLineController.m */; };
 		8D27B73215DCDBEA00C6C8D8 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D27B73115DCDBEA00C6C8D8 /* second.png */; };
 		8D27B73415DCDBEA00C6C8D8 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D27B73315DCDBEA00C6C8D8 /* second@2x.png */; };
+		8D561BE115DE02A2008E98DC /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D561BE015DE02A2008E98DC /* icon.png */; };
+		8D561BE315DE033D008E98DC /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D561BE215DE033D008E98DC /* icon@2x.png */; };
+		8D561BE515DE03EC008E98DC /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D561BE415DE03EC008E98DC /* Default.png */; };
+		8D561BE715DE0457008E98DC /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D561BE615DE0457008E98DC /* Default@2x.png */; };
 		8D7A25D115DD30AE007F493E /* StationTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7A25D015DD30AE007F493E /* StationTableController.m */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +47,10 @@
 		8D27B72F15DCDBEA00C6C8D8 /* ProductionLineController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProductionLineController.m; sourceTree = "<group>"; };
 		8D27B73115DCDBEA00C6C8D8 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		8D27B73315DCDBEA00C6C8D8 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		8D561BE015DE02A2008E98DC /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		8D561BE215DE033D008E98DC /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		8D561BE415DE03EC008E98DC /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		8D561BE615DE0457008E98DC /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		8D7A25CF15DD30AE007F493E /* StationTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StationTableController.h; path = ../StationTableController.h; sourceTree = "<group>"; };
 		8D7A25D015DD30AE007F493E /* StationTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StationTableController.m; path = ../StationTableController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,6 +72,10 @@
 		8D27B70315DCDBEA00C6C8D8 = {
 			isa = PBXGroup;
 			children = (
+				8D561BE615DE0457008E98DC /* Default@2x.png */,
+				8D561BE415DE03EC008E98DC /* Default.png */,
+				8D561BE215DE033D008E98DC /* icon@2x.png */,
+				8D561BE015DE02A2008E98DC /* icon.png */,
 				8D27B71815DCDBEA00C6C8D8 /* ProductionLine */,
 				8D27B71115DCDBEA00C6C8D8 /* Frameworks */,
 				8D27B70F15DCDBEA00C6C8D8 /* Products */,
@@ -177,6 +189,10 @@
 				8D27B72D15DCDBEA00C6C8D8 /* first@2x.png in Resources */,
 				8D27B73215DCDBEA00C6C8D8 /* second.png in Resources */,
 				8D27B73415DCDBEA00C6C8D8 /* second@2x.png in Resources */,
+				8D561BE115DE02A2008E98DC /* icon.png in Resources */,
+				8D561BE315DE033D008E98DC /* icon@2x.png in Resources */,
+				8D561BE515DE03EC008E98DC /* Default.png in Resources */,
+				8D561BE715DE0457008E98DC /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +285,7 @@
 				GCC_PREFIX_HEADER = "ProductionLine/ProductionLine-Prefix.pch";
 				INFOPLIST_FILE = "ProductionLine/ProductionLine-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -280,6 +297,7 @@
 				GCC_PREFIX_HEADER = "ProductionLine/ProductionLine-Prefix.pch";
 				INFOPLIST_FILE = "ProductionLine/ProductionLine-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
