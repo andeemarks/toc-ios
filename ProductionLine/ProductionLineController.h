@@ -12,5 +12,6 @@
 
 @property (nonatomic) NSInteger inventorySize;
 @property (nonatomic) NSInteger stationCount;
+@property (nonatomic) NSMutableArray *stationData;
 
 @end

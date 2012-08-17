@@ -21,7 +21,7 @@
 @synthesize inventorySizeLabel;
 @synthesize stationTable;
 
-
+@synthesize stationData;
 @synthesize inventorySize;
 @synthesize stationCount;
 
@@ -37,6 +37,7 @@
     [super viewDidAppear:animated];
     [self retreiveSetup];
     [stationTable reloadData];
+    stationData = [[NSMutableArray alloc] init ];
 }
 
 - (void)viewDidUnload
