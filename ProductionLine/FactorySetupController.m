@@ -61,7 +61,29 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Factory setup has changed" 
+                                                    message:@"Do you want to reset the factory floor to match the setup?" 
+                                                   delegate:self 
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:@"Cancel", nil];
+    [alert show];
+    
     [self persistSetup];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+	
+	if([title isEqualToString:@"OK"])
+	{
+		NSLog(@"Button 1 was selected.");
+	}
+	else if([title isEqualToString:@"Cancel"])
+	{
+		NSLog(@"Button 2 was selected.");
+	}
 }
 
 - (void)viewDidUnload

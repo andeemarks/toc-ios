@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FactorySetupController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate> {
+@interface FactorySetupController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, UIAlertViewDelegate> {
     
 //    IBOutlet UIPickerView *pickerView;
     NSMutableArray *values;    
