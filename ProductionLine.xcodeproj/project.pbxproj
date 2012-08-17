@@ -25,6 +25,7 @@
 		8D561BE515DE03EC008E98DC /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D561BE415DE03EC008E98DC /* Default.png */; };
 		8D561BE715DE0457008E98DC /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D561BE615DE0457008E98DC /* Default@2x.png */; };
 		8D561BEB15DE39C1008E98DC /* play-button-green-triangle-48.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D561BEA15DE39C1008E98DC /* play-button-green-triangle-48.png */; };
+		8D561BEE15DE4098008E98DC /* Station.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D561BED15DE4098008E98DC /* Station.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,11 +48,13 @@
 		8D27B72F15DCDBEA00C6C8D8 /* ProductionLineController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProductionLineController.m; sourceTree = "<group>"; };
 		8D27B73115DCDBEA00C6C8D8 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		8D27B73315DCDBEA00C6C8D8 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
-		8D561BE015DE02A2008E98DC /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
-		8D561BE215DE033D008E98DC /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
-		8D561BE415DE03EC008E98DC /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		8D561BE615DE0457008E98DC /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		8D561BE015DE02A2008E98DC /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
+		8D561BE215DE033D008E98DC /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "../icon@2x.png"; sourceTree = "<group>"; };
+		8D561BE415DE03EC008E98DC /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
+		8D561BE615DE0457008E98DC /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		8D561BEA15DE39C1008E98DC /* play-button-green-triangle-48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-button-green-triangle-48.png"; sourceTree = "<group>"; };
+		8D561BEC15DE4098008E98DC /* Station.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Station.h; sourceTree = "<group>"; };
+		8D561BED15DE4098008E98DC /* Station.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Station.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,10 +74,6 @@
 		8D27B70315DCDBEA00C6C8D8 = {
 			isa = PBXGroup;
 			children = (
-				8D561BE615DE0457008E98DC /* Default@2x.png */,
-				8D561BE415DE03EC008E98DC /* Default.png */,
-				8D561BE215DE033D008E98DC /* icon@2x.png */,
-				8D561BE015DE02A2008E98DC /* icon.png */,
 				8D27B71815DCDBEA00C6C8D8 /* ProductionLine */,
 				8D27B71115DCDBEA00C6C8D8 /* Frameworks */,
 				8D27B70F15DCDBEA00C6C8D8 /* Products */,
@@ -102,18 +101,12 @@
 		8D27B71815DCDBEA00C6C8D8 /* ProductionLine */ = {
 			isa = PBXGroup;
 			children = (
-				8D561BEA15DE39C1008E98DC /* play-button-green-triangle-48.png */,
+				8D561BF115DE45E7008E98DC /* controllers */,
+				8D561BF015DE45C7008E98DC /* images */,
+				8D561BEF15DE45AC008E98DC /* domain */,
 				8D27B72115DCDBEA00C6C8D8 /* ProductionLineAppDelegate.h */,
 				8D27B72215DCDBEA00C6C8D8 /* ProductionLineAppDelegate.m */,
 				8D27B72415DCDBEA00C6C8D8 /* MainStoryboard.storyboard */,
-				8D27B72715DCDBEA00C6C8D8 /* FactorySetupController.h */,
-				8D27B72815DCDBEA00C6C8D8 /* FactorySetupController.m */,
-				8D27B72A15DCDBEA00C6C8D8 /* first.png */,
-				8D27B72C15DCDBEA00C6C8D8 /* first@2x.png */,
-				8D27B72E15DCDBEA00C6C8D8 /* ProductionLineController.h */,
-				8D27B72F15DCDBEA00C6C8D8 /* ProductionLineController.m */,
-				8D27B73115DCDBEA00C6C8D8 /* second.png */,
-				8D27B73315DCDBEA00C6C8D8 /* second@2x.png */,
 				8D27B71915DCDBEA00C6C8D8 /* Supporting Files */,
 			);
 			path = ProductionLine;
@@ -128,6 +121,42 @@
 				8D27B72015DCDBEA00C6C8D8 /* ProductionLine-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8D561BEF15DE45AC008E98DC /* domain */ = {
+			isa = PBXGroup;
+			children = (
+				8D561BEC15DE4098008E98DC /* Station.h */,
+				8D561BED15DE4098008E98DC /* Station.m */,
+			);
+			name = domain;
+			sourceTree = "<group>";
+		};
+		8D561BF015DE45C7008E98DC /* images */ = {
+			isa = PBXGroup;
+			children = (
+				8D561BEA15DE39C1008E98DC /* play-button-green-triangle-48.png */,
+				8D561BE615DE0457008E98DC /* Default@2x.png */,
+				8D561BE415DE03EC008E98DC /* Default.png */,
+				8D561BE215DE033D008E98DC /* icon@2x.png */,
+				8D561BE015DE02A2008E98DC /* icon.png */,
+				8D27B72A15DCDBEA00C6C8D8 /* first.png */,
+				8D27B72C15DCDBEA00C6C8D8 /* first@2x.png */,
+				8D27B73115DCDBEA00C6C8D8 /* second.png */,
+				8D27B73315DCDBEA00C6C8D8 /* second@2x.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		8D561BF115DE45E7008E98DC /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8D27B72715DCDBEA00C6C8D8 /* FactorySetupController.h */,
+				8D27B72815DCDBEA00C6C8D8 /* FactorySetupController.m */,
+				8D27B72E15DCDBEA00C6C8D8 /* ProductionLineController.h */,
+				8D27B72F15DCDBEA00C6C8D8 /* ProductionLineController.m */,
+			);
+			name = controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,6 +235,7 @@
 				8D27B72315DCDBEA00C6C8D8 /* ProductionLineAppDelegate.m in Sources */,
 				8D27B72915DCDBEA00C6C8D8 /* FactorySetupController.m in Sources */,
 				8D27B73015DCDBEA00C6C8D8 /* ProductionLineController.m in Sources */,
+				8D561BEE15DE4098008E98DC /* Station.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
