@@ -24,6 +24,7 @@
 		8D561BE315DE033D008E98DC /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D561BE215DE033D008E98DC /* icon@2x.png */; };
 		8D561BE515DE03EC008E98DC /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D561BE415DE03EC008E98DC /* Default.png */; };
 		8D561BE715DE0457008E98DC /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D561BE615DE0457008E98DC /* Default@2x.png */; };
+		8D561BEB15DE39C1008E98DC /* play-button-green-triangle-48.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D561BEA15DE39C1008E98DC /* play-button-green-triangle-48.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		8D561BE215DE033D008E98DC /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		8D561BE415DE03EC008E98DC /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		8D561BE615DE0457008E98DC /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		8D561BEA15DE39C1008E98DC /* play-button-green-triangle-48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play-button-green-triangle-48.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 		8D27B71815DCDBEA00C6C8D8 /* ProductionLine */ = {
 			isa = PBXGroup;
 			children = (
+				8D561BEA15DE39C1008E98DC /* play-button-green-triangle-48.png */,
 				8D27B72115DCDBEA00C6C8D8 /* ProductionLineAppDelegate.h */,
 				8D27B72215DCDBEA00C6C8D8 /* ProductionLineAppDelegate.m */,
 				8D27B72415DCDBEA00C6C8D8 /* MainStoryboard.storyboard */,
@@ -188,6 +191,7 @@
 				8D561BE315DE033D008E98DC /* icon@2x.png in Resources */,
 				8D561BE515DE03EC008E98DC /* Default.png in Resources */,
 				8D561BE715DE0457008E98DC /* Default@2x.png in Resources */,
+				8D561BEB15DE39C1008E98DC /* play-button-green-triangle-48.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

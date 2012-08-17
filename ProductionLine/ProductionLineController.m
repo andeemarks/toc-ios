@@ -12,14 +12,13 @@
 
 - (void)retreiveSetup;
 @property (weak, nonatomic) IBOutlet UILabel *inventorySizeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *stationCountLabel;
 @property (weak, nonatomic) IBOutlet UITableView *stationTable;
+- (IBAction)play:(id)sender;
 
 @end
 
 @implementation ProductionLineController
 @synthesize inventorySizeLabel;
-@synthesize stationCountLabel;
 @synthesize stationTable;
 
 
@@ -43,8 +42,6 @@
 - (void)viewDidUnload
 {
     [self setInventorySizeLabel:nil];
-    [self setStationCountLabel:nil];
-    [self setStationTable:nil];
     [self setStationTable:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -53,6 +50,10 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return @"Station";
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -64,7 +65,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *cellId = [NSString stringWithFormat:@"Station %d", [indexPath indexAtPosition:1] + 1];
+    NSString *cellId = [NSString stringWithFormat:@"%d", [indexPath indexAtPosition:1] + 1];
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: cellId];
     
@@ -85,10 +86,9 @@
     self.stationCount = [prefs integerForKey:@"stationCount"];
     self.inventorySize = [prefs integerForKey:@"inventorySize"];
     
-    self.stationCountLabel.text = [NSString stringWithFormat: @"%i", self.stationCount];
     self.inventorySizeLabel.text = [NSString stringWithFormat: @"%i", self.inventorySize];
-    
-//    self.stationTable.numberOfSections = self.stationCount;
 }
 
+- (IBAction)play:(id)sender {
+}
 @end
