@@ -62,15 +62,17 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    NSString *cellId = [NSString stringWithFormat:@"Station %d", [indexPath indexAtPosition:1] + 1];
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: cellId];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier: cellId];
     }
     
     NSLog(@"%@", indexPath); 
     UILabel *cellText = [cell textLabel];
-    cellText.text = [NSString stringWithFormat:@"Station %d", [indexPath indexAtPosition:1]]; 
+    cellText.text = cellId; 
     
     return cell;
 }

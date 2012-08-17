@@ -38,6 +38,9 @@
     [values addObject:[NSNumber numberWithInteger:4]];
     [values addObject:[NSNumber numberWithInteger:5]];
     [values addObject:[NSNumber numberWithInteger:6]];
+    
+    [self.pickerView selectRow:2 inComponent:0 animated:NO];
+    self.stationCount = 3;
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView {
@@ -67,7 +70,7 @@
                                                    delegate:self 
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:@"Cancel", nil];
-    [alert show];
+//    [alert show];
     
     [self persistSetup];
 }
