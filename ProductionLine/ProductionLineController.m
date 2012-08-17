@@ -37,12 +37,14 @@
 {
     [super viewDidAppear:animated];
     [self retreiveSetup];
+    [stationTable reloadData];
 }
 
 - (void)viewDidUnload
 {
     [self setInventorySizeLabel:nil];
     [self setStationCountLabel:nil];
+    [self setStationTable:nil];
     [self setStationTable:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -70,7 +72,6 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier: cellId];
     }
     
-    NSLog(@"%@", indexPath); 
     UILabel *cellText = [cell textLabel];
     cellText.text = cellId; 
     

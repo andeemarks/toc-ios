@@ -133,6 +133,7 @@
                     <connections>
                         <outlet property="inventorySizeLabel" destination="L4B-ZV-q3T" id="zCX-Fi-73a"/>
                         <outlet property="stationCountLabel" destination="sxm-DF-UYk" id="yMe-Ox-Ri4"/>
+                        <outlet property="stationTable" destination="BJ7-8U-QmX" id="IIe-0r-2JS"/>
                     </connections>
                 </viewController>
             </objects>
