@@ -9,12 +9,14 @@
 #import <Foundation/Foundation.h>
 
 @interface Station : NSObject
-{
-    int number;
-    int size;
-    int score;
-}
 
--(id) initWithId:(int) myNumber andSize:(int) mySize;
+@property int number;
+@property int size;
+@property int score;
+
+-(id) initWithId:(int) myNumber;
+-(id) initWithSize:(int) mySize;
+-(int) reduceInventoryBy:(int) amountToReduce;
+-(void) increaseInventoryBy:(int) amountToIncrease;
 
 @end

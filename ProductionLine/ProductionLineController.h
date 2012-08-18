@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Station.h"
 
 @interface ProductionLineController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic) NSInteger inventorySize;
 @property (nonatomic) NSInteger stationCount;
 @property (nonatomic) NSMutableArray *stationData;
+@property (nonatomic) Station *partsBin;
 
 @end

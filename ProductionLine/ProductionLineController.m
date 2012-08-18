@@ -7,6 +7,8 @@
 //
 
 #import "ProductionLineController.h"
+#import "Station.h"
+#import <stdlib.h>
 
 @interface ProductionLineController ()
 
@@ -24,6 +26,7 @@
 @synthesize stationData;
 @synthesize inventorySize;
 @synthesize stationCount;
+@synthesize partsBin;
 
 - (void)viewDidLoad
 {
@@ -37,7 +40,19 @@
     [super viewDidAppear:animated];
     [self retreiveSetup];
     [stationTable reloadData];
-    stationData = [[NSMutableArray alloc] init ];
+    
+    [self initStationData];
+}
+
+- (void)initStationData
+{
+    stationData = [[NSMutableArray alloc] initWithCapacity: stationCount];
+    
+    partsBin = [[Station alloc] initWithSize: inventorySize];
+    for(int n = 1; n <= stationCount; n = n + 1) {
+        [stationData addObject:[[Station alloc] initWithId:n]];
+    }
+
 }
 
 - (void)viewDidUnload
@@ -66,6 +81,8 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    NSLog(@"cellForRowAtIndexPath");
+    
     NSString *cellId = [NSString stringWithFormat:@"%d", [indexPath indexAtPosition:1] + 1];
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: cellId];
@@ -75,7 +92,7 @@
     }
     
     UILabel *cellText = [cell textLabel];
-    cellText.text = cellId; 
+    cellText.text = [[stationData objectAtIndex: [indexPath indexAtPosition: 1]] description]; 
     
     return cell;
 }
@@ -91,5 +108,14 @@
 }
 
 - (IBAction)play:(id)sender {
+    int diceRoll = arc4random_uniform(6) + 1;
+    int amountToAdd = [partsBin reduceInventoryBy: diceRoll];
+    
+    for (Station *station in stationData) {
+        [station increaseInventoryBy: amountToAdd];
+        diceRoll = arc4random_uniform(6) + 1;
+        amountToAdd = [station reduceInventoryBy: diceRoll];
+    }
+    [stationTable reloadData];
 }
 @end
