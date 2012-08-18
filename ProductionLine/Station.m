@@ -14,22 +14,22 @@
 @synthesize size;
 @synthesize number;
 
--(id) initWithId:(int) myNumber {
+-(id) initWithId:(int) myNumber andSize: (int) mySize {
     self = [super init];
     if (self) {
         self.number = myNumber;
+        self.size = mySize;
     }
 
     return self;
 }
 
+-(id) initWithId:(int) myNumber {
+    return [self initWithId: myNumber andSize: 0];
+}
+
 -(id) initWithSize:(int) mySize {
-    self = [super init];
-    if (self) {
-        self.size = mySize;
-    }
-    
-    return self;
+    return [self initWithId: 0 andSize: mySize];
 }
 
 - (NSString *)description {
@@ -37,13 +37,14 @@
 }
 
 -(int) reduceInventoryBy:(int) amountToReduce {
-    if (size - amountToReduce >= 0) {
-        size -= amountToReduce;
-    } else {
-        size = 0;
-    }
+    if (size - amountToReduce < 0) {
+        amountToReduce = size;
+    } 
     
-    return size;
+    size -= amountToReduce;
+    score += (amountToReduce - 3.5);
+    
+    return amountToReduce;
 }
 
 -(void) increaseInventoryBy:(int) amountToIncrease {
