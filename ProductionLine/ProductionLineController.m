@@ -114,8 +114,11 @@
     for (Station *station in stationData) {
         [station increaseInventoryBy: amountToAdd];
         diceRoll = arc4random_uniform(6) + 1;
-        amountToAdd = [station reduceInventoryBy: diceRoll];
+        if (station != [stationData lastObject]) {
+            amountToAdd = [station reduceInventoryBy: diceRoll];
+        }
     }
     [stationTable reloadData];
+    self.inventorySizeLabel.text = [NSString stringWithFormat: @"%i", partsBin.size];
 }
 @end
