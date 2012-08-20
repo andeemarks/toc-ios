@@ -103,18 +103,40 @@
 
     return cell;
     
-//    NSString *cellId = [NSString stringWithFormat:@"%d", [indexPath indexAtPosition:1] + 1];
-//    
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: cellId];
-//    
-//    if (cell == nil) {
-//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier: cellId];
-//    }
-//    
-//    UILabel *cellText = [cell textLabel];
-//    cellText.text = [[stationData objectAtIndex: [indexPath indexAtPosition: 1]] description]; 
-//    
-//    return cell;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,tableView.frame.size.width,30)];
+    
+    UILabel *stationNumberLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, headerView.frame.size.height)];
+    
+    stationNumberLabel.text = @"Station";
+    stationNumberLabel.backgroundColor = [UIColor grayColor];
+    
+    [headerView addSubview:stationNumberLabel];
+    
+    UILabel *stationSizeLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 0, 200, headerView.frame.size.height)];
+    
+    stationSizeLabel.text = @"Size";
+    stationSizeLabel.backgroundColor = [UIColor grayColor];
+    
+    [headerView addSubview:stationSizeLabel];
+    
+    UILabel *stationScoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(230, 0, 200, headerView.frame.size.height)];
+    
+    stationScoreLabel.text = @"Score";
+    stationScoreLabel.backgroundColor = [UIColor grayColor];
+    
+    [headerView addSubview:stationScoreLabel];
+    
+    return headerView;
+    
+}
+
+-(float)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    
+    return  20.0;
 }
 
 - (void)retreiveSetup 
