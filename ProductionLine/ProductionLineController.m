@@ -7,6 +7,7 @@
 //
 
 #import "ProductionLineController.h"
+#import "StationStatusCell.h"
 #import "Station.h"
 #import <stdlib.h>
 
@@ -81,20 +82,39 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    NSLog(@"cellForRowAtIndexPath");
-    
+    NSLog(@"cellForRowAtIndexPath");
     NSString *cellId = [NSString stringWithFormat:@"%d", [indexPath indexAtPosition:1] + 1];
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: cellId];
-    
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier: cellId];
+
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    if (cell == nil)
+    {
+        //Load custom cell from NIB file
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"StationStatusCell" owner:self options:NULL];
+        cell = (StationStatusCell *) [nib objectAtIndex:0];
     }
     
-    UILabel *cellText = [cell textLabel];
-    cellText.text = [[stationData objectAtIndex: [indexPath indexAtPosition: 1]] description]; 
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    Station *station = [stationData objectAtIndex: [indexPath indexAtPosition: 1]];
+                        
+    NSLog(@"%@", station.description);
+    ((StationStatusCell*) cell).number.text = [NSString stringWithFormat: @"%d", [station number]];
+    ((StationStatusCell*) cell).size.text = [NSString stringWithFormat: @"%d", [station size]];
+    ((StationStatusCell*) cell).score.text = [NSString stringWithFormat: @"%d", [station score]];
+
     return cell;
+    
+//    NSString *cellId = [NSString stringWithFormat:@"%d", [indexPath indexAtPosition:1] + 1];
+//    
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: cellId];
+//    
+//    if (cell == nil) {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier: cellId];
+//    }
+//    
+//    UILabel *cellText = [cell textLabel];
+//    cellText.text = [[stationData objectAtIndex: [indexPath indexAtPosition: 1]] description]; 
+//    
+//    return cell;
 }
 
 - (void)retreiveSetup 

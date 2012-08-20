@@ -167,25 +167,6 @@
         <image name="play-button-green-triangle-48.png" width="48" height="48"/>
         <image name="second" width="16" height="16"/>
     </resources>
-    <classes>
-        <class className="FactorySetupController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FactorySetupController.h"/>
-            <relationships>
-                <relationship kind="action" name="inventorySizeChanged:" candidateClass="UISlider"/>
-                <relationship kind="outlet" name="inventorySizeLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="inventorySizeSlider" candidateClass="UISlider"/>
-                <relationship kind="outlet" name="pickerView" candidateClass="UIPickerView"/>
-            </relationships>
-        </class>
-        <class className="ProductionLineController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProductionLineController.h"/>
-            <relationships>
-                <relationship kind="action" name="play:"/>
-                <relationship kind="outlet" name="inventorySizeLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="stationTable" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
