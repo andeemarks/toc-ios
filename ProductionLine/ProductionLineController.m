@@ -110,31 +110,25 @@ void updateCellFromStation(Station *station, UITableViewCell *cell) {
     return headerView;
 }
 
-void addStationLabelToView(UIView *headerView) {
-    UILabel *stationNumberLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, headerView.frame.size.height)];
+void addLabelToView(NSString *text, NSInteger startXPos, UIView *headerView) {
+    UILabel *stationNumberLabel = [[UILabel alloc] initWithFrame:CGRectMake(startXPos, 0, 200, headerView.frame.size.height)];
     
-    stationNumberLabel.text = @"Station";
+    stationNumberLabel.text = text;
     stationNumberLabel.backgroundColor = [UIColor grayColor];
     
     [headerView addSubview:stationNumberLabel];
 }
 
+void addStationLabelToView(UIView *headerView) {
+    addLabelToView(@"Station", 0, headerView);
+}
+
 void addSizeLabelToView(UIView *headerView) {
-    UILabel *stationSizeLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 0, 200, headerView.frame.size.height)];
-    
-    stationSizeLabel.text = @"Size";
-    stationSizeLabel.backgroundColor = [UIColor grayColor];
-    
-    [headerView addSubview:stationSizeLabel];
+    addLabelToView(@"Size", 120, headerView);
 }
 
 void addScoreLabelToView(UIView *headerView) {
-    UILabel *stationScoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(230, 0, 200, headerView.frame.size.height)];
-    
-    stationScoreLabel.text = @"Score";
-    stationScoreLabel.backgroundColor = [UIColor grayColor];
-    
-    [headerView addSubview:stationScoreLabel];
+    addLabelToView(@"Score", 230, headerView);
 }
 
 -(float)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -150,6 +144,20 @@ void addScoreLabelToView(UIView *headerView) {
     inventorySizeLabel.text = [NSString stringWithFormat: @"%i", self.inventorySize];
 }
 
+- (void)updateInventoryLabels {
+    if (partsBin.isEmpty) {
+        inventorySizeLabel.text = @"<empty>";
+    } else {
+        inventorySizeLabel.text = [NSString stringWithFormat: @"%i", partsBin.size];
+    }
+    
+    if (((Station *)stationData.lastObject).isEmpty) {
+        completedInventoryLabel.text = @"<empty>";
+    } else {
+        completedInventoryLabel.text = [NSString stringWithFormat: @"%i", ((Station *)stationData.lastObject).size];
+    }
+}
+
 - (IBAction)play:(id)sender {
     int diceRoll = arc4random_uniform(6) + 1;
     int amountToAdd = [partsBin reduceInventoryBy: diceRoll];
@@ -162,16 +170,6 @@ void addScoreLabelToView(UIView *headerView) {
         }
     }
     [stationTable reloadData];
-    if (partsBin.isEmpty) {
-        inventorySizeLabel.text = @"<empty>";
-    } else {
-        inventorySizeLabel.text = [NSString stringWithFormat: @"%i", partsBin.size];
-    }
-    
-    if (((Station *)stationData.lastObject).isEmpty) {
-        completedInventoryLabel.text = @"<empty>";
-    } else {
-        completedInventoryLabel.text = [NSString stringWithFormat: @"%i", ((Station *)stationData.lastObject).size];
-    }
+    [self updateInventoryLabels];
 }
 @end
