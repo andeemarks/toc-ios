@@ -17,10 +17,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *inventorySizeLabel;
 @property (weak, nonatomic) IBOutlet UITableView *stationTable;
 - (IBAction)play:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *completedInventoryLabel;
 
 @end
 
 @implementation ProductionLineController
+@synthesize completedInventoryLabel;
 @synthesize inventorySizeLabel;
 @synthesize stationTable;
 
@@ -29,15 +31,13 @@
 @synthesize stationCount;
 @synthesize partsBin;
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [self retreiveSetup];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self retreiveSetup];
     [stationTable reloadData];
@@ -45,32 +45,25 @@
     [self initStationData];
 }
 
-- (void)initStationData
-{
+- (void)initStationData {
     stationData = [[NSMutableArray alloc] initWithCapacity: stationCount];
     
     partsBin = [[Station alloc] initWithSize: inventorySize];
     for(int n = 1; n <= stationCount; n = n + 1) {
         [stationData addObject:[[Station alloc] initWithId:n]];
     }
-
 }
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
     [self setInventorySizeLabel:nil];
     [self setStationTable:nil];
+    [self setCompletedInventoryLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"Station";
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -82,7 +75,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"cellForRowAtIndexPath");
+//    NSLog(@"cellForRowAtIndexPath");
     NSString *cellId = [NSString stringWithFormat:@"%d", [indexPath indexAtPosition:1] + 1];
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
@@ -96,57 +89,65 @@
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
     Station *station = [stationData objectAtIndex: [indexPath indexAtPosition: 1]];
                         
-    NSLog(@"%@", station.description);
-    ((StationStatusCell*) cell).number.text = [NSString stringWithFormat: @"%d", [station number]];
-    ((StationStatusCell*) cell).size.text = [NSString stringWithFormat: @"%d", [station size]];
-    ((StationStatusCell*) cell).score.text = [NSString stringWithFormat: @"%d", [station score]];
+    updateCellFromStation(station, cell);
 
     return cell;
-    
+}
+
+void updateCellFromStation(Station *station, UITableViewCell *cell) {
+    ((StationStatusCell*) cell).number.text = [NSString stringWithFormat: @"%d", [station number]];
+    ((StationStatusCell*) cell).size.text =   [NSString stringWithFormat: @"%d", [station size]];
+    ((StationStatusCell*) cell).score.text =  [NSString stringWithFormat: @"%d", [station score]];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,tableView.frame.size.width,30)];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,tableView.frame.size.width,20)];
     
+    addStationLabelToView(headerView);
+    addSizeLabelToView(headerView);
+    addScoreLabelToView(headerView);
+    
+    return headerView;
+}
+
+void addStationLabelToView(UIView *headerView) {
     UILabel *stationNumberLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, headerView.frame.size.height)];
     
     stationNumberLabel.text = @"Station";
     stationNumberLabel.backgroundColor = [UIColor grayColor];
     
     [headerView addSubview:stationNumberLabel];
-    
+}
+
+void addSizeLabelToView(UIView *headerView) {
     UILabel *stationSizeLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 0, 200, headerView.frame.size.height)];
     
     stationSizeLabel.text = @"Size";
     stationSizeLabel.backgroundColor = [UIColor grayColor];
     
     [headerView addSubview:stationSizeLabel];
-    
+}
+
+void addScoreLabelToView(UIView *headerView) {
     UILabel *stationScoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(230, 0, 200, headerView.frame.size.height)];
     
     stationScoreLabel.text = @"Score";
     stationScoreLabel.backgroundColor = [UIColor grayColor];
     
     [headerView addSubview:stationScoreLabel];
-    
-    return headerView;
-    
 }
 
 -(float)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    
     return  20.0;
 }
 
-- (void)retreiveSetup 
-{
+- (void)retreiveSetup {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     
-    self.stationCount = [prefs integerForKey:@"stationCount"];
-    self.inventorySize = [prefs integerForKey:@"inventorySize"];
+    stationCount = [prefs integerForKey:@"stationCount"];
+    inventorySize = [prefs integerForKey:@"inventorySize"];
     
-    self.inventorySizeLabel.text = [NSString stringWithFormat: @"%i", self.inventorySize];
+    inventorySizeLabel.text = [NSString stringWithFormat: @"%i", self.inventorySize];
 }
 
 - (IBAction)play:(id)sender {
@@ -161,6 +162,16 @@
         }
     }
     [stationTable reloadData];
-    self.inventorySizeLabel.text = [NSString stringWithFormat: @"%i", partsBin.size];
+    if (partsBin.isEmpty) {
+        inventorySizeLabel.text = @"<empty>";
+    } else {
+        inventorySizeLabel.text = [NSString stringWithFormat: @"%i", partsBin.size];
+    }
+    
+    if (((Station *)stationData.lastObject).isEmpty) {
+        completedInventoryLabel.text = @"<empty>";
+    } else {
+        completedInventoryLabel.text = [NSString stringWithFormat: @"%i", ((Station *)stationData.lastObject).size];
+    }
 }
 @end

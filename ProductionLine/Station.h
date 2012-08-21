@@ -18,5 +18,5 @@
 -(id) initWithSize:(int) mySize;
 -(int) reduceInventoryBy:(int) amountToReduce;
 -(void) increaseInventoryBy:(int) amountToIncrease;
-
+-(BOOL) isEmpty;
 @end

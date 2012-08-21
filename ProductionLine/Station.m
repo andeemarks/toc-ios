@@ -32,6 +32,10 @@
     return [self initWithId: 0 andSize: mySize];
 }
 
+-(BOOL) isEmpty {
+    return size <= 0;
+}
+
 - (NSString *)description {
     return [NSString stringWithFormat:@"Station: %d Size: %d Score: %d", [self number], [self size], [self score]];
 }
