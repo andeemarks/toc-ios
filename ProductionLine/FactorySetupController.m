@@ -9,30 +9,30 @@
 #import "FactorySetupController.h"
 
 @interface FactorySetupController ()
-@property (weak, nonatomic) IBOutlet UIPickerView *inventorySizePicker;
 @property (weak, nonatomic) IBOutlet UIPickerView *stationCountPicker;
+@property (weak, nonatomic) IBOutlet UIPickerView *inventorySizePicker;
 
 - (void)persistSetup;
 
 @end
 
 @implementation FactorySetupController
+@synthesize stationCountPicker;
+@synthesize inventorySizePicker;
 
 @synthesize stationCount;
 @synthesize inventorySize;
-@synthesize inventorySizePicker;
-@synthesize stationCountPicker;
 
 - (void)initStationCountPicker
 {
 	// Do any additional setup after loading the view, typically from a nib.
     stationCountValues = [[NSMutableArray alloc] init];
-    [stationCountValues addObject:[NSNumber numberWithInteger:25]];
-    [stationCountValues addObject:[NSNumber numberWithInteger:50]];
-    [stationCountValues addObject:[NSNumber numberWithInteger:75]];
-    [stationCountValues addObject:[NSNumber numberWithInteger:100]];
-    [stationCountValues addObject:[NSNumber numberWithInteger:125]];
-    [stationCountValues addObject:[NSNumber numberWithInteger:150]];
+    [stationCountValues addObject:[NSNumber numberWithInteger:1]];
+    [stationCountValues addObject:[NSNumber numberWithInteger:2]];
+    [stationCountValues addObject:[NSNumber numberWithInteger:3]];
+    [stationCountValues addObject:[NSNumber numberWithInteger:4]];
+    [stationCountValues addObject:[NSNumber numberWithInteger:5]];
+    [stationCountValues addObject:[NSNumber numberWithInteger:6]];
     
     [self.stationCountPicker selectRow:2 inComponent:0 animated:NO];
     self.stationCount = 3;
@@ -42,15 +42,15 @@
 {
 	// Do any additional setup after loading the view, typically from a nib.
     inventorySizeValues = [[NSMutableArray alloc] init];
-    [inventorySizeValues addObject:[NSNumber numberWithInteger:1]];
-    [inventorySizeValues addObject:[NSNumber numberWithInteger:2]];
-    [inventorySizeValues addObject:[NSNumber numberWithInteger:3]];
-    [inventorySizeValues addObject:[NSNumber numberWithInteger:4]];
-    [inventorySizeValues addObject:[NSNumber numberWithInteger:5]];
-    [inventorySizeValues addObject:[NSNumber numberWithInteger:6]];
+    [inventorySizeValues addObject:[NSNumber numberWithInteger:25]];
+    [inventorySizeValues addObject:[NSNumber numberWithInteger:50]];
+    [inventorySizeValues addObject:[NSNumber numberWithInteger:75]];
+    [inventorySizeValues addObject:[NSNumber numberWithInteger:100]];
+    [inventorySizeValues addObject:[NSNumber numberWithInteger:125]];
+    [inventorySizeValues addObject:[NSNumber numberWithInteger:150]];
     
     [self.inventorySizePicker selectRow:2 inComponent:0 animated:NO];
-    self.inventorySize = 3;
+    self.inventorySize = 75;
 }
 
 - (void)viewDidLoad
@@ -66,16 +66,28 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return 6;
-}
-
-- (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return [[stationCountValues objectAtIndex:row] stringValue];
-}
-
-- (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    if ([pickerView isEqual: stationCountPicker]) {
+        return stationCountValues.count;
+    }
     
-    self.stationCount = [[stationCountValues objectAtIndex:row] integerValue];
+    return inventorySizeValues.count;
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    if ([pickerView isEqual: stationCountPicker]) {
+        return [[stationCountValues objectAtIndex:row] stringValue];
+    }
+    
+    return [[inventorySizeValues objectAtIndex:row] stringValue];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    
+    if ([pickerView isEqual: stationCountPicker]) {
+        self.stationCount = [[stationCountValues objectAtIndex:row] integerValue];
+    }
+    
+    self.inventorySize = [[inventorySizeValues objectAtIndex:row] integerValue];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -110,6 +122,9 @@
 {
     [self setInventorySizePicker:nil];
     [self setStationCountPicker:nil];
+    [self setInventorySizePicker:nil];
+    [self setStationCountPicker:nil];
+    [self setInventorySizePicker:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
