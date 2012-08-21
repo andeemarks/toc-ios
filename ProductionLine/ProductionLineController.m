@@ -21,12 +21,10 @@
 
 @synthesize line;
 @synthesize playButton;
-@synthesize cycleCount;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    [self retreiveSetup];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -35,8 +33,9 @@
     
     [stationTable reloadData];
     [playButton setEnabled: TRUE];
-
-    cycleCount = 0;
+    cycleCountLabel.text = [NSString stringWithFormat: @"%i", [line cycleCount]];
+    [self updateInventoryLabels];
+    
 }
 
 - (void)viewDidUnload {
@@ -160,12 +159,9 @@
     [self updateInventoryLabels];
     
     if ([line isFinished]) {
-        [self.playButton setEnabled: FALSE];
+        [playButton setEnabled: FALSE];
     }
     
-    cycleCountLabel.text = [NSString stringWithFormat: @"%i", ++cycleCount];
-    
-    
-    
+    cycleCountLabel.text = [NSString stringWithFormat: @"%i", [line cycleCount]];
 }
 @end

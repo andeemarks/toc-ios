@@ -12,12 +12,10 @@
 
 @interface ProductionLineController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic) NSInteger cycleCount;
 @property (nonatomic) ProductionLine *line;
 
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
 
-- (void)retreiveSetup;
 @property (weak, nonatomic) IBOutlet UILabel *inventorySizeLabel;
 @property (weak, nonatomic) IBOutlet UITableView *stationTable;
 - (IBAction)play:(id)sender;

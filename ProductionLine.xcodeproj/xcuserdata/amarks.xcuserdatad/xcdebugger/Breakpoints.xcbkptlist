@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ProductionLine/ProductionLine.m"
-         timestampString = "367225673.134482"
+         timestampString = "367226004.146937"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "26"
-         endingLineNumber = "26"
+         startingLineNumber = "27"
+         endingLineNumber = "27"
          landmarkName = "-initWithNumberOfStations:andInventory:"
          landmarkType = "5">
       </FileBreakpoint>

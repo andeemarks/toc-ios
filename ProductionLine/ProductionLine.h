@@ -15,6 +15,7 @@
 @property int inventory;
 @property (nonatomic) NSMutableArray *stationData;
 @property (strong, nonatomic) Station *partsBin;
+@property (nonatomic) NSInteger cycleCount;
 
 -(void) runOneCycle;
 -(id) initWithNumberOfStations:(int) theNumberOfStations andInventory: (int) theInventory;

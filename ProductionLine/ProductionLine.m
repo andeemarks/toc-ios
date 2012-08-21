@@ -15,6 +15,7 @@
 @synthesize inventory;
 @synthesize stationData;
 @synthesize partsBin;
+@synthesize cycleCount;
 
 -(id) initWithNumberOfStations:(int) theNumberOfStations andInventory: (int) theInventory {
     self = [super init];
@@ -28,6 +29,8 @@
     for(int n = 1; n <= self.numberOfStations; n = n + 1) {
         [stationData addObject:[[Station alloc] initWithId:n]];
     }
+    
+    cycleCount = 0;
     
     return self;
 }
@@ -43,6 +46,8 @@
             amountToAdd = [station reduceInventoryBy: diceRoll];
         }
     }
+    
+    cycleCount++;
 }
 
 -(Station *) stationAtIndex: (int) index {
