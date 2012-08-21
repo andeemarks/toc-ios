@@ -95,6 +95,13 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Number of Cycles Run" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" id="f5o-Kr-XHx">
+                                <rect key="frame" x="20" y="335" width="188" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" id="L4B-ZV-q3T">
                                 <rect key="frame" x="234" y="71" width="66" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -104,6 +111,13 @@
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="&lt;empty>" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" id="486-Jl-7TK">
                                 <rect key="frame" x="234" y="322" width="66" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" id="aip-Gw-DX7">
+                                <rect key="frame" x="234" y="335" width="66" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -119,13 +133,13 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="A9f-d9-QqV">
-                                <rect key="frame" x="124" y="359" width="72" height="37"/>
+                                <rect key="frame" x="78" y="354" width="72" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES" button="YES" image="YES"/>
                                 </accessibility>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="play-button-green-triangle-48.png">
+                                <state key="normal" image="thumbs_000614-blue-chrome-rain-icon-media-a-media22-arrow-forward1.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -136,12 +150,25 @@
                                     <action selector="play:" destination="3" eventType="touchUpInside" id="pfl-2f-sYd"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="azh-bn-UO6">
+                                <rect key="frame" x="169" y="354" width="72" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" backgroundImage="thumbs_000618-blue-chrome-rain-icon-media-a-media26-arrows-skip-forward.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Run" image="second" id="6"/>
                     <connections>
                         <outlet property="completedInventoryLabel" destination="486-Jl-7TK" id="Lnr-GP-PBg"/>
+                        <outlet property="cycleCountLabel" destination="aip-Gw-DX7" id="DCt-5N-sLq"/>
                         <outlet property="inventorySizeLabel" destination="L4B-ZV-q3T" id="zCX-Fi-73a"/>
                         <outlet property="playButton" destination="A9f-d9-QqV" id="JXA-2H-twa"/>
                         <outlet property="stationTable" destination="BJ7-8U-QmX" id="IIe-0r-2JS"/>
@@ -172,8 +199,9 @@
     </scenes>
     <resources>
         <image name="first" width="16" height="16"/>
-        <image name="play-button-green-triangle-48.png" width="48" height="48"/>
         <image name="second" width="16" height="16"/>
+        <image name="thumbs_000614-blue-chrome-rain-icon-media-a-media22-arrow-forward1.png" width="64" height="64"/>
+        <image name="thumbs_000618-blue-chrome-rain-icon-media-a-media26-arrows-skip-forward.png" width="64" height="64"/>
     </resources>
     <classes>
         <class className="FactorySetupController" superclassName="UIViewController">

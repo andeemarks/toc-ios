@@ -13,6 +13,7 @@
 
 @property (nonatomic) NSInteger inventorySize;
 @property (nonatomic) NSInteger stationCount;
+@property (nonatomic) NSInteger cycleCount;
 @property (nonatomic) NSMutableArray *stationData;
 @property (nonatomic) Station *partsBin;
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
@@ -22,5 +23,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *stationTable;
 - (IBAction)play:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *completedInventoryLabel;
+@property (weak, nonatomic) IBOutlet UILabel *cycleCountLabel;
 
 @end

@@ -13,6 +13,7 @@
 
 @implementation ProductionLineController
 @synthesize completedInventoryLabel;
+@synthesize cycleCountLabel;
 @synthesize inventorySizeLabel;
 @synthesize stationTable;
 
@@ -21,6 +22,7 @@
 @synthesize stationCount;
 @synthesize partsBin;
 @synthesize playButton;
+@synthesize cycleCount;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,6 +36,7 @@
     [stationTable reloadData];
     
     [self initStationData];
+    cycleCount = 0;
 }
 
 - (void)initStationData {
@@ -50,6 +53,7 @@
     [self setStationTable:nil];
     [self setCompletedInventoryLabel:nil];
     [self setPlayButton:nil];
+    [self setCycleCountLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -80,15 +84,15 @@
     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     Station *station = [stationData objectAtIndex: [indexPath indexAtPosition: 1]];
                         
-    [self updateCell: cell fromStation: station];
+    [self updateCell: (StationStatusCell*) cell fromStation: station];
 
     return cell;
 }
 
-- (void) updateCell:(UITableViewCell *) cell fromStation:(Station *) station {
-    ((StationStatusCell*) cell).number.text = [NSString stringWithFormat: @"%d", [station number]];
-    ((StationStatusCell*) cell).size.text =   [NSString stringWithFormat: @"%d", [station size]];
-    ((StationStatusCell*) cell).score.text =  [NSString stringWithFormat: @"%d", [station score]];
+- (void) updateCell:(StationStatusCell *) cell fromStation:(Station *) station {
+    cell.number.text = [NSString stringWithFormat: @"%d", [station number]];
+    cell.size.text =   [NSString stringWithFormat: @"%d", [station size]];
+    cell.score.text =  [NSString stringWithFormat: @"%d", [station score]];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -171,5 +175,7 @@
     if ([self isFinished]) {
         [self.playButton setEnabled: FALSE];
     }
+    
+    cycleCountLabel.text = [NSString stringWithFormat: @"%i", ++cycleCount];
 }
 @end
