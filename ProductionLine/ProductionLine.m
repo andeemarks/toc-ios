@@ -22,15 +22,15 @@
     if (self) {
         self.numberOfStations = theNumberOfStations;
         self.inventory = theInventory;
-    }
     
-    partsBin = [[Station alloc] initWithSize: self.inventory];
-    stationData = [[NSMutableArray alloc] initWithCapacity:[self numberOfStations]];
-    for(int n = 1; n <= self.numberOfStations; n = n + 1) {
-        [stationData addObject:[[Station alloc] initWithId:n]];
+        partsBin = [[Station alloc] initWithSize: self.inventory];
+        stationData = [[NSMutableArray alloc] initWithCapacity:[self numberOfStations]];
+        for(int n = 1; n <= self.numberOfStations; n = n + 1) {
+            [stationData addObject:[[Station alloc] initWithId:n]];
+        }
+        
+        cycleCount = 0;
     }
-    
-    cycleCount = 0;
     
     return self;
 }
@@ -58,7 +58,7 @@
     return [partsBin size];
 }
 
-- (BOOL)isFinished {
+- (BOOL) isFinished {
     return ((Station *)stationData.lastObject).size >= inventory;
 }
 

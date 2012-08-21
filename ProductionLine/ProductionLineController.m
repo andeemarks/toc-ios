@@ -55,6 +55,8 @@
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
+#pragma mark Table Stuff
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -93,6 +95,8 @@
     cell.score.text =  [NSString stringWithFormat: @"%d", [station score]];
 }
 
+#pragma mark Header Stuff
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,tableView.frame.size.width,20)];
     
@@ -128,6 +132,8 @@
 -(float)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return  20.0;
 }
+
+#pragma mark App Logic
 
 - (void)retreiveSetup {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
