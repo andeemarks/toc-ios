@@ -15,6 +15,7 @@
 @property (nonatomic) NSInteger stationCount;
 @property (nonatomic) NSMutableArray *stationData;
 @property (nonatomic) Station *partsBin;
+@property (weak, nonatomic) IBOutlet UIButton *playButton;
 
 - (void)retreiveSetup;
 @property (weak, nonatomic) IBOutlet UILabel *inventorySizeLabel;

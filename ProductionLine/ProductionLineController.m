@@ -20,6 +20,7 @@
 @synthesize inventorySize;
 @synthesize stationCount;
 @synthesize partsBin;
+@synthesize playButton;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -48,6 +49,7 @@
     [self setInventorySizeLabel:nil];
     [self setStationTable:nil];
     [self setCompletedInventoryLabel:nil];
+    [self setPlayButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -100,12 +102,13 @@
 }
 
 - (void) addLabel: (NSString *) text toView: (UIView *)view startingAtXPos: (NSInteger) startXPos {
-    UILabel *stationNumberLabel = [[UILabel alloc] initWithFrame:CGRectMake(startXPos, 0, 200, view.frame.size.height)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(startXPos, 0, 200, view.frame.size.height)];
     
-    stationNumberLabel.text = text;
-    stationNumberLabel.backgroundColor = [UIColor grayColor];
+    label.text = text;
+    label.backgroundColor = [UIColor blueColor];
+    label.textColor = [UIColor whiteColor];
     
-    [view addSubview:stationNumberLabel];
+    [view addSubview:label];
 }
 
 - (void) addStationLabelToView: (UIView *) headerView {
@@ -147,6 +150,10 @@
     }
 }
 
+- (BOOL)isFinished {
+    return ((Station *)stationData.lastObject).size >= [self inventorySize];
+}
+
 - (IBAction)play:(id)sender {
     int diceRoll = arc4random_uniform(6) + 1;
     int amountToAdd = [partsBin reduceInventoryBy: diceRoll];
@@ -160,5 +167,9 @@
     }
     [stationTable reloadData];
     [self updateInventoryLabels];
+    
+    if ([self isFinished]) {
+        [self.playButton setEnabled: FALSE];
+    }
 }
 @end
