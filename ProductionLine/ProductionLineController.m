@@ -21,6 +21,7 @@
 
 @synthesize line;
 @synthesize playButton;
+@synthesize fastForwardButton;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,6 +34,7 @@
     
     [stationTable reloadData];
     [playButton setEnabled: TRUE];
+    [fastForwardButton setEnabled: TRUE];
     cycleCountLabel.text = [NSString stringWithFormat: @"%i", [line cycleCount]];
     [self updateInventoryLabels];
     
@@ -44,6 +46,7 @@
     [self setCompletedInventoryLabel:nil];
     [self setPlayButton:nil];
     [self setCycleCountLabel:nil];
+    [self setFastForwardButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -73,7 +76,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"cellForRowAtIndexPath");
+//    NSLog(@"cellForRowAtIndexPath");
     UITableViewCell *cell = [self findCellForPath: indexPath];
     
     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
@@ -160,8 +163,16 @@
     
     if ([line isFinished]) {
         [playButton setEnabled: FALSE];
+        [fastForwardButton setEnabled: FALSE];
     }
     
     cycleCountLabel.text = [NSString stringWithFormat: @"%i", [line cycleCount]];
 }
+
+- (IBAction)fastForward:(id)sender {
+    while (![line isFinished]) {
+        [self play: sender];
+    }
+}
+
 @end

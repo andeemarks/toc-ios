@@ -147,7 +147,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="play:" destination="3" eventType="touchUpInside" id="pfl-2f-sYd"/>
+                                    <action selector="play:" destination="3" eventType="touchUpInside" id="M0d-aU-Eoo"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="azh-bn-UO6">
@@ -161,6 +161,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="fastForward:" destination="3" eventType="touchUpInside" id="rZG-Og-6WJ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -169,6 +172,7 @@
                     <connections>
                         <outlet property="completedInventoryLabel" destination="486-Jl-7TK" id="Lnr-GP-PBg"/>
                         <outlet property="cycleCountLabel" destination="aip-Gw-DX7" id="DCt-5N-sLq"/>
+                        <outlet property="fastForwardButton" destination="azh-bn-UO6" id="9Sw-o4-CSy"/>
                         <outlet property="inventorySizeLabel" destination="L4B-ZV-q3T" id="zCX-Fi-73a"/>
                         <outlet property="playButton" destination="A9f-d9-QqV" id="JXA-2H-twa"/>
                         <outlet property="stationTable" destination="BJ7-8U-QmX" id="IIe-0r-2JS"/>
@@ -203,26 +207,6 @@
         <image name="thumbs_000614-blue-chrome-rain-icon-media-a-media22-arrow-forward1.png" width="64" height="64"/>
         <image name="thumbs_000618-blue-chrome-rain-icon-media-a-media26-arrows-skip-forward.png" width="64" height="64"/>
     </resources>
-    <classes>
-        <class className="FactorySetupController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FactorySetupController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="inventorySizePicker" candidateClass="UIPickerView"/>
-                <relationship kind="outlet" name="stationCountPicker" candidateClass="UIPickerView"/>
-            </relationships>
-        </class>
-        <class className="ProductionLineController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProductionLineController.h"/>
-            <relationships>
-                <relationship kind="action" name="play:"/>
-                <relationship kind="outlet" name="completedInventoryLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="cycleCountLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="inventorySizeLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="playButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="stationTable" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

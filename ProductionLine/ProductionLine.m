@@ -61,6 +61,7 @@
 - (BOOL)isFinished {
     return ((Station *)stationData.lastObject).size >= inventory;
 }
+
 - (BOOL) hasUnprocessedInventory {
     return [self completedInventory] > 0;
 }
