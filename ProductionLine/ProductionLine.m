@@ -25,7 +25,7 @@
     
         partsBin = [[Station alloc] initWithSize: self.inventory];
         stationData = [[NSMutableArray alloc] initWithCapacity:[self numberOfStations]];
-        for(int n = 1; n <= self.numberOfStations; n = n + 1) {
+        for(int n = 1; n <= self.numberOfStations; n++) {
             [stationData addObject:[[Station alloc] initWithId:n]];
         }
         

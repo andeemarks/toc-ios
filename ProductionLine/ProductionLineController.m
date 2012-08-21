@@ -57,6 +57,10 @@
 
 #pragma mark Table Stuff
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 20.0;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -111,8 +115,9 @@
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(startXPos, 0, 200, view.frame.size.height)];
     
     label.text = text;
-    label.backgroundColor = [UIColor blueColor];
-    label.textColor = [UIColor whiteColor];
+    label.backgroundColor = [UIColor whiteColor];
+    label.textColor = [UIColor blueColor];
+    label.font = [UIFont fontWithName:@"Helvetica" size: 12.0]; 
     
     [view addSubview:label];
 }

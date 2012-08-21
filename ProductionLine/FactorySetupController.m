@@ -122,9 +122,6 @@
 {
     [self setInventorySizePicker:nil];
     [self setStationCountPicker:nil];
-    [self setInventorySizePicker:nil];
-    [self setStationCountPicker:nil];
-    [self setInventorySizePicker:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
