@@ -9,18 +9,17 @@
 #import "ProductionLineController.h"
 #import "StationStatusCell.h"
 #import "Station.h"
+#import "ProductionLine.h"
 #import <stdlib.h>
 
 @implementation ProductionLineController
+
 @synthesize completedInventoryLabel;
 @synthesize cycleCountLabel;
 @synthesize inventorySizeLabel;
 @synthesize stationTable;
 
-@synthesize stationData;
-@synthesize inventorySize;
-@synthesize stationCount;
-@synthesize partsBin;
+@synthesize line;
 @synthesize playButton;
 @synthesize cycleCount;
 
@@ -33,19 +32,11 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self retreiveSetup];
+    
     [stationTable reloadData];
-    
-    [self initStationData];
-    cycleCount = 0;
-}
+    [playButton setEnabled: TRUE];
 
-- (void)initStationData {
-    stationData = [[NSMutableArray alloc] initWithCapacity: stationCount];
-    
-    partsBin = [[Station alloc] initWithSize: inventorySize];
-    for(int n = 1; n <= stationCount; n = n + 1) {
-        [stationData addObject:[[Station alloc] initWithId:n]];
-    }
+    cycleCount = 0;
 }
 
 - (void)viewDidUnload {
@@ -67,22 +58,27 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self stationCount];
+    return [line numberOfStations];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    NSLog(@"cellForRowAtIndexPath");
+- (UITableViewCell *) findCellForPath:(NSIndexPath *) indexPath {
     NSString *cellId = [NSString stringWithFormat:@"%d", [indexPath indexAtPosition:1] + 1];
-
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    
+    UITableViewCell *cell = [stationTable dequeueReusableCellWithIdentifier:cellId];
     if (cell == nil) {
         //Load custom cell from NIB file
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"StationStatusCell" owner:self options:NULL];
         cell = (StationStatusCell *) [nib objectAtIndex:0];
     }
+    return cell;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"cellForRowAtIndexPath");
+    UITableViewCell *cell = [self findCellForPath: indexPath];
     
     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-    Station *station = [stationData objectAtIndex: [indexPath indexAtPosition: 1]];
+    Station *station = [line stationAtIndex: [indexPath indexAtPosition: 1]];
                         
     [self updateCell: (StationStatusCell*) cell fromStation: station];
 
@@ -134,48 +130,42 @@
 - (void)retreiveSetup {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     
-    stationCount = [prefs integerForKey:@"stationCount"];
-    inventorySize = [prefs integerForKey:@"inventorySize"];
+    int stationCount = [prefs integerForKey:@"stationCount"];
+    int inventorySize = [prefs integerForKey:@"inventorySize"];
     
-    inventorySizeLabel.text = [NSString stringWithFormat: @"%i", self.inventorySize];
+    inventorySizeLabel.text = [NSString stringWithFormat: @"%i", inventorySize];
+    
+    line = [[ProductionLine alloc] initWithNumberOfStations: stationCount andInventory: inventorySize];
+
 }
 
 - (void)updateInventoryLabels {
-    if (partsBin.isEmpty) {
+    if (![line hasUnprocessedInventory]) {
         inventorySizeLabel.text = @"<empty>";
     } else {
-        inventorySizeLabel.text = [NSString stringWithFormat: @"%i", partsBin.size];
+        inventorySizeLabel.text = [NSString stringWithFormat: @"%i", [line unprocessedInventory]];
     }
     
-    if (((Station *)stationData.lastObject).isEmpty) {
+    if ([line completedInventory] <= 0) {
         completedInventoryLabel.text = @"<empty>";
     } else {
-        completedInventoryLabel.text = [NSString stringWithFormat: @"%i", ((Station *)stationData.lastObject).size];
+        completedInventoryLabel.text = [NSString stringWithFormat: @"%i", [line completedInventory]];
     }
 }
 
-- (BOOL)isFinished {
-    return ((Station *)stationData.lastObject).size >= [self inventorySize];
-}
 
 - (IBAction)play:(id)sender {
-    int diceRoll = arc4random_uniform(6) + 1;
-    int amountToAdd = [partsBin reduceInventoryBy: diceRoll];
-    
-    for (Station *station in stationData) {
-        [station increaseInventoryBy: amountToAdd];
-        diceRoll = arc4random_uniform(6) + 1;
-        if (station != [stationData lastObject]) {
-            amountToAdd = [station reduceInventoryBy: diceRoll];
-        }
-    }
+    [line runOneCycle];
     [stationTable reloadData];
     [self updateInventoryLabels];
     
-    if ([self isFinished]) {
+    if ([line isFinished]) {
         [self.playButton setEnabled: FALSE];
     }
     
     cycleCountLabel.text = [NSString stringWithFormat: @"%i", ++cycleCount];
+    
+    
+    
 }
 @end

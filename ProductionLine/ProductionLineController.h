@@ -8,14 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "Station.h"
+#import "ProductionLine.h"
 
 @interface ProductionLineController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic) NSInteger inventorySize;
-@property (nonatomic) NSInteger stationCount;
 @property (nonatomic) NSInteger cycleCount;
-@property (nonatomic) NSMutableArray *stationData;
-@property (nonatomic) Station *partsBin;
+@property (nonatomic) ProductionLine *line;
+
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
 
 - (void)retreiveSetup;
