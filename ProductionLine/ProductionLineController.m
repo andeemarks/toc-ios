@@ -79,8 +79,7 @@
     NSString *cellId = [NSString stringWithFormat:@"%d", [indexPath indexAtPosition:1] + 1];
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-    if (cell == nil)
-    {
+    if (cell == nil) {
         //Load custom cell from NIB file
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"StationStatusCell" owner:self options:NULL];
         cell = (StationStatusCell *) [nib objectAtIndex:0];

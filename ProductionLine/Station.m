@@ -46,13 +46,14 @@
     } 
     
     size -= amountToReduce;
-    score += (amountToReduce - 3.5);
     
     return amountToReduce;
 }
 
 -(void) increaseInventoryBy:(int) amountToIncrease {
     size += amountToIncrease;
+
+    score += (amountToIncrease - 3.5);
 }
 
 @end
