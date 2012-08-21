@@ -9,11 +9,8 @@
 #import "FactorySetupController.h"
 
 @interface FactorySetupController ()
-@property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
-
-- (IBAction)inventorySizeChanged:(UISlider *)sender;
-@property (weak, nonatomic) IBOutlet UISlider *inventorySizeSlider;
-@property (weak, nonatomic) IBOutlet UILabel *inventorySizeLabel;
+@property (weak, nonatomic) IBOutlet UIPickerView *inventorySizePicker;
+@property (weak, nonatomic) IBOutlet UIPickerView *stationCountPicker;
 
 - (void)persistSetup;
 
@@ -22,25 +19,45 @@
 @implementation FactorySetupController
 
 @synthesize stationCount;
-@synthesize inventorySizeSlider;
-@synthesize inventorySizeLabel;
 @synthesize inventorySize;
-@synthesize pickerView;
+@synthesize inventorySizePicker;
+@synthesize stationCountPicker;
+
+- (void)initStationCountPicker
+{
+	// Do any additional setup after loading the view, typically from a nib.
+    stationCountValues = [[NSMutableArray alloc] init];
+    [stationCountValues addObject:[NSNumber numberWithInteger:25]];
+    [stationCountValues addObject:[NSNumber numberWithInteger:50]];
+    [stationCountValues addObject:[NSNumber numberWithInteger:75]];
+    [stationCountValues addObject:[NSNumber numberWithInteger:100]];
+    [stationCountValues addObject:[NSNumber numberWithInteger:125]];
+    [stationCountValues addObject:[NSNumber numberWithInteger:150]];
+    
+    [self.stationCountPicker selectRow:2 inComponent:0 animated:NO];
+    self.stationCount = 3;
+}
+
+- (void)initInventorySizePicker
+{
+	// Do any additional setup after loading the view, typically from a nib.
+    inventorySizeValues = [[NSMutableArray alloc] init];
+    [inventorySizeValues addObject:[NSNumber numberWithInteger:1]];
+    [inventorySizeValues addObject:[NSNumber numberWithInteger:2]];
+    [inventorySizeValues addObject:[NSNumber numberWithInteger:3]];
+    [inventorySizeValues addObject:[NSNumber numberWithInteger:4]];
+    [inventorySizeValues addObject:[NSNumber numberWithInteger:5]];
+    [inventorySizeValues addObject:[NSNumber numberWithInteger:6]];
+    
+    [self.inventorySizePicker selectRow:2 inComponent:0 animated:NO];
+    self.inventorySize = 3;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    values = [[NSMutableArray alloc] init];
-    [values addObject:[NSNumber numberWithInteger:1]];
-    [values addObject:[NSNumber numberWithInteger:2]];
-    [values addObject:[NSNumber numberWithInteger:3]];
-    [values addObject:[NSNumber numberWithInteger:4]];
-    [values addObject:[NSNumber numberWithInteger:5]];
-    [values addObject:[NSNumber numberWithInteger:6]];
-    
-    [self.pickerView selectRow:2 inComponent:0 animated:NO];
-    self.stationCount = 3;
+    [self initStationCountPicker];
+    [self initInventorySizePicker];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView {
@@ -53,23 +70,23 @@
 }
 
 - (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return [[values objectAtIndex:row] stringValue];
+    return [[stationCountValues objectAtIndex:row] stringValue];
 }
 
 - (void)pickerView:(UIPickerView *)thePickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     
-    self.stationCount = [[values objectAtIndex:row] integerValue];
+    self.stationCount = [[stationCountValues objectAtIndex:row] integerValue];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Factory setup has changed" 
-                                                    message:@"Do you want to reset the factory floor to match the setup?" 
-                                                   delegate:self 
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:@"Cancel", nil];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Factory setup has changed" 
+//                                                    message:@"Do you want to reset the factory floor to match the setup?" 
+//                                                   delegate:self 
+//                                          cancelButtonTitle:@"OK"
+//                                          otherButtonTitles:@"Cancel", nil];
 //    [alert show];
     
     [self persistSetup];
@@ -91,9 +108,8 @@
 
 - (void)viewDidUnload
 {
-    [self setInventorySizeSlider:nil];
-    [self setInventorySizeLabel:nil];
-    [self setPickerView:nil];
+    [self setInventorySizePicker:nil];
+    [self setStationCountPicker:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -103,20 +119,8 @@
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
-- (void)captureInventorySize {
-    self.inventorySize = (int) inventorySizeSlider.value;
-    
-    self.inventorySizeLabel.text = [NSString stringWithFormat: @"%i", self.inventorySize];
-}
-
-- (IBAction)inventorySizeChanged:(UISlider *)sender {
-    [self captureInventorySize];
-}
-
 - (void)persistSetup 
 {
-    [self captureInventorySize];
-
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
 
     [prefs setInteger:self.stationCount forKey:@"stationCount"];

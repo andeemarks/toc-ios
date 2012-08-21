@@ -10,7 +10,8 @@
 
 @interface FactorySetupController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, UIAlertViewDelegate> {
     
-    NSMutableArray *values;    
+    NSMutableArray *stationCountValues;    
+    NSMutableArray *inventorySizeValues;    
 }
 
 
