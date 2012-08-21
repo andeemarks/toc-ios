@@ -11,16 +11,6 @@
 #import "Station.h"
 #import <stdlib.h>
 
-@interface ProductionLineController ()
-
-- (void)retreiveSetup;
-@property (weak, nonatomic) IBOutlet UILabel *inventorySizeLabel;
-@property (weak, nonatomic) IBOutlet UITableView *stationTable;
-- (IBAction)play:(id)sender;
-@property (weak, nonatomic) IBOutlet UILabel *completedInventoryLabel;
-
-@end
-
 @implementation ProductionLineController
 @synthesize completedInventoryLabel;
 @synthesize inventorySizeLabel;
@@ -85,15 +75,15 @@
         cell = (StationStatusCell *) [nib objectAtIndex:0];
     }
     
-    cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     Station *station = [stationData objectAtIndex: [indexPath indexAtPosition: 1]];
                         
-    updateCellFromStation(station, cell);
+    [self updateCell: cell fromStation: station];
 
     return cell;
 }
 
-void updateCellFromStation(Station *station, UITableViewCell *cell) {
+- (void) updateCell:(UITableViewCell *) cell fromStation:(Station *) station {
     ((StationStatusCell*) cell).number.text = [NSString stringWithFormat: @"%d", [station number]];
     ((StationStatusCell*) cell).size.text =   [NSString stringWithFormat: @"%d", [station size]];
     ((StationStatusCell*) cell).score.text =  [NSString stringWithFormat: @"%d", [station score]];
@@ -102,32 +92,32 @@ void updateCellFromStation(Station *station, UITableViewCell *cell) {
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,tableView.frame.size.width,20)];
     
-    addStationLabelToView(headerView);
-    addSizeLabelToView(headerView);
-    addScoreLabelToView(headerView);
+    [self addStationLabelToView: headerView];
+    [self addSizeLabelToView: headerView];
+    [self addScoreLabelToView: headerView];
     
     return headerView;
 }
 
-void addLabelToView(NSString *text, NSInteger startXPos, UIView *headerView) {
-    UILabel *stationNumberLabel = [[UILabel alloc] initWithFrame:CGRectMake(startXPos, 0, 200, headerView.frame.size.height)];
+- (void) addLabel: (NSString *) text toView: (UIView *)view startingAtXPos: (NSInteger) startXPos {
+    UILabel *stationNumberLabel = [[UILabel alloc] initWithFrame:CGRectMake(startXPos, 0, 200, view.frame.size.height)];
     
     stationNumberLabel.text = text;
     stationNumberLabel.backgroundColor = [UIColor grayColor];
     
-    [headerView addSubview:stationNumberLabel];
+    [view addSubview:stationNumberLabel];
 }
 
-void addStationLabelToView(UIView *headerView) {
-    addLabelToView(@"Station", 0, headerView);
+- (void) addStationLabelToView: (UIView *) headerView {
+    [self addLabel: @"Station" toView: headerView startingAtXPos: 0];
 }
 
-void addSizeLabelToView(UIView *headerView) {
-    addLabelToView(@"Size", 120, headerView);
+- (void) addSizeLabelToView: (UIView *) headerView {
+    [self addLabel: @"Size" toView: headerView startingAtXPos: 120];
 }
 
-void addScoreLabelToView(UIView *headerView) {
-    addLabelToView(@"Score", 230, headerView);
+- (void) addScoreLabelToView: (UIView *) headerView {
+    [self addLabel: @"Score" toView: headerView startingAtXPos: 230];
 }
 
 -(float)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {

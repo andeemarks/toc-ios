@@ -37,7 +37,7 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"Station: %d Size: %d Score: %d", [self number], [self size], [self score]];
+    return [NSString stringWithFormat:@"Station: %d Size: %d Score: %d", number, size, score];
 }
 
 -(int) reduceInventoryBy:(int) amountToReduce {

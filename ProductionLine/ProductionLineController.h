@@ -16,6 +16,10 @@
 @property (nonatomic) NSMutableArray *stationData;
 @property (nonatomic) Station *partsBin;
 
-
+- (void)retreiveSetup;
+@property (weak, nonatomic) IBOutlet UILabel *inventorySizeLabel;
+@property (weak, nonatomic) IBOutlet UITableView *stationTable;
+- (IBAction)play:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *completedInventoryLabel;
 
 @end
