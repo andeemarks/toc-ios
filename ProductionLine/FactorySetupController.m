@@ -26,13 +26,10 @@
 - (void)initStationCountPicker
 {
 	// Do any additional setup after loading the view, typically from a nib.
-    stationCountValues = [[NSMutableArray alloc] init];
-    [stationCountValues addObject:[NSNumber numberWithInteger:1]];
-    [stationCountValues addObject:[NSNumber numberWithInteger:2]];
-    [stationCountValues addObject:[NSNumber numberWithInteger:3]];
-    [stationCountValues addObject:[NSNumber numberWithInteger:4]];
-    [stationCountValues addObject:[NSNumber numberWithInteger:5]];
-    [stationCountValues addObject:[NSNumber numberWithInteger:6]];
+    stationCountValues = [[NSMutableArray alloc] initWithCapacity: 8];
+    for ( int i = 1 ; i <= 6 ; i ++ ) {
+        [stationCountValues addObject:[NSNumber numberWithInt:i]];
+    }
     
     [self.stationCountPicker selectRow:2 inComponent:0 animated:NO];
     self.stationCount = 3;
@@ -41,13 +38,10 @@
 - (void)initInventorySizePicker
 {
 	// Do any additional setup after loading the view, typically from a nib.
-    inventorySizeValues = [[NSMutableArray alloc] init];
-    [inventorySizeValues addObject:[NSNumber numberWithInteger:25]];
-    [inventorySizeValues addObject:[NSNumber numberWithInteger:50]];
-    [inventorySizeValues addObject:[NSNumber numberWithInteger:75]];
-    [inventorySizeValues addObject:[NSNumber numberWithInteger:100]];
-    [inventorySizeValues addObject:[NSNumber numberWithInteger:125]];
-    [inventorySizeValues addObject:[NSNumber numberWithInteger:150]];
+    inventorySizeValues = [[NSMutableArray alloc] initWithCapacity: 6];
+    for ( int i = 25 ; i <= 150 ; i = i + 25 ) {
+        [inventorySizeValues addObject:[NSNumber numberWithInt:i]];
+    }
     
     [self.inventorySizePicker selectRow:2 inComponent:0 animated:NO];
     self.inventorySize = 75;
@@ -61,7 +55,6 @@
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)thePickerView {
-    
     return 1;
 }
 
@@ -94,28 +87,7 @@
 {
     [super viewDidDisappear:animated];
     
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Factory setup has changed" 
-//                                                    message:@"Do you want to reset the factory floor to match the setup?" 
-//                                                   delegate:self 
-//                                          cancelButtonTitle:@"OK"
-//                                          otherButtonTitles:@"Cancel", nil];
-//    [alert show];
-    
     [self persistSetup];
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-	NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
-	
-	if([title isEqualToString:@"OK"])
-	{
-		NSLog(@"Button 1 was selected.");
-	}
-	else if([title isEqualToString:@"Cancel"])
-	{
-		NSLog(@"Button 2 was selected.");
-	}
 }
 
 - (void)viewDidUnload

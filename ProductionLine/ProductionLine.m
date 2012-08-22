@@ -63,7 +63,7 @@
 }
 
 - (BOOL) hasUnprocessedInventory {
-    return [self completedInventory] > 0;
+    return [partsBin size] > 0;
 }
 
 - (int) completedInventory {
