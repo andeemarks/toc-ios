@@ -31,6 +31,7 @@
 		8DC81CDA15E355C600ECF86B /* thumbs_000614-blue-chrome-rain-icon-media-a-media22-arrow-forward1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DC81CD915E355C600ECF86B /* thumbs_000614-blue-chrome-rain-icon-media-a-media22-arrow-forward1.png */; };
 		8DC81CDC15E355D300ECF86B /* thumbs_000618-blue-chrome-rain-icon-media-a-media26-arrows-skip-forward.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DC81CDB15E355D300ECF86B /* thumbs_000618-blue-chrome-rain-icon-media-a-media26-arrows-skip-forward.png */; };
 		8DC81CDF15E35BF300ECF86B /* ProductionLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC81CDE15E35BF300ECF86B /* ProductionLine.m */; };
+		8DC81CE115E48B9300ECF86B /* Dice.png in Resources */ = {isa = PBXBuildFile; fileRef = 8DC81CE015E48B9300ECF86B /* Dice.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		8DC81CDB15E355D300ECF86B /* thumbs_000618-blue-chrome-rain-icon-media-a-media26-arrows-skip-forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbs_000618-blue-chrome-rain-icon-media-a-media26-arrows-skip-forward.png"; sourceTree = "<group>"; };
 		8DC81CDD15E35BF300ECF86B /* ProductionLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductionLine.h; sourceTree = "<group>"; };
 		8DC81CDE15E35BF300ECF86B /* ProductionLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductionLine.m; sourceTree = "<group>"; };
+		8DC81CE015E48B9300ECF86B /* Dice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Dice.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 		8D27B71815DCDBEA00C6C8D8 /* ProductionLine */ = {
 			isa = PBXGroup;
 			children = (
+				8DC81CE015E48B9300ECF86B /* Dice.png */,
 				8D9CE82515E22911002D410A /* views */,
 				8D561BF115DE45E7008E98DC /* controllers */,
 				8D561BF015DE45C7008E98DC /* images */,
@@ -251,6 +254,7 @@
 				8D9CE82715E22B48002D410A /* StationStatusCell.xib in Resources */,
 				8DC81CDA15E355C600ECF86B /* thumbs_000614-blue-chrome-rain-icon-media-a-media22-arrow-forward1.png in Resources */,
 				8DC81CDC15E355D300ECF86B /* thumbs_000618-blue-chrome-rain-icon-media-a-media26-arrows-skip-forward.png in Resources */,
+				8DC81CE115E48B9300ECF86B /* Dice.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -97,6 +97,7 @@
     cell.number.text = [NSString stringWithFormat: @"%d", [station number]];
     cell.size.text =   [NSString stringWithFormat: @"%d", [station size]];
     cell.score.text =  [NSString stringWithFormat: @"%d", [station score]];
+    cell.dice.image =  [UIImage imageNamed:@"Dice.png"];
 }
 
 #pragma mark Header Stuff

@@ -13,6 +13,7 @@
 @synthesize number;
 @synthesize score;
 @synthesize size;
+@synthesize dice;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
