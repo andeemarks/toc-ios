@@ -23,26 +23,17 @@
 @synthesize stationCount;
 @synthesize inventorySize;
 
+static int stationCountValues[8] = {1, 2, 3, 4, 5, 6, 7, 8 };
+static int inventorySizeValues[6] = {25, 50, 75, 100, 125, 150};
+        
 - (void)initStationCountPicker
 {
-	// Do any additional setup after loading the view, typically from a nib.
-    stationCountValues = [[NSMutableArray alloc] initWithCapacity: 8];
-    for ( int i = 1 ; i <= 6 ; i ++ ) {
-        [stationCountValues addObject:[NSNumber numberWithInt:i]];
-    }
-    
     [self.stationCountPicker selectRow:2 inComponent:0 animated:NO];
     self.stationCount = 3;
 }
 
 - (void)initInventorySizePicker
 {
-	// Do any additional setup after loading the view, typically from a nib.
-    inventorySizeValues = [[NSMutableArray alloc] initWithCapacity: 6];
-    for ( int i = 25 ; i <= 150 ; i = i + 25 ) {
-        [inventorySizeValues addObject:[NSNumber numberWithInt:i]];
-    }
-    
     [self.inventorySizePicker selectRow:2 inComponent:0 animated:NO];
     self.inventorySize = 75;
 }
@@ -60,27 +51,26 @@
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     if ([pickerView isEqual: stationCountPicker]) {
-        return stationCountValues.count;
+        return 8;
     }
     
-    return inventorySizeValues.count;
+    return 6;
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     if ([pickerView isEqual: stationCountPicker]) {
-        return [[stationCountValues objectAtIndex:row] stringValue];
+        return [NSString stringWithFormat: @"%d", stationCountValues[row]];
     }
     
-    return [[inventorySizeValues objectAtIndex:row] stringValue];
+    return [NSString stringWithFormat: @"%d", inventorySizeValues[row]];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    
     if ([pickerView isEqual: stationCountPicker]) {
-        self.stationCount = [[stationCountValues objectAtIndex:row] integerValue];
+        self.stationCount = stationCountValues[row];
+    } else {
+        self.inventorySize = inventorySizeValues[row];
     }
-    
-    self.inventorySize = [[inventorySizeValues objectAtIndex:row] integerValue];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -107,8 +97,8 @@
 {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
 
-    [prefs setInteger:self.stationCount forKey:@"stationCount"];
-    [prefs setInteger:self.inventorySize forKey:@"inventorySize"];
+    [prefs setInteger:stationCount forKey:@"stationCount"];
+    [prefs setInteger:inventorySize forKey:@"inventorySize"];
 
     [prefs synchronize];
 }

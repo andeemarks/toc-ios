@@ -9,9 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface FactorySetupController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, UIAlertViewDelegate> {
-    
-    NSMutableArray *stationCountValues;    
-    NSMutableArray *inventorySizeValues;    
 }
 
 
