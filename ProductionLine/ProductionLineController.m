@@ -105,6 +105,7 @@
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,tableView.frame.size.width,20)];
     
     [self addStationLabelToView: headerView];
+    [self addDiceLabelToView: headerView];
     [self addSizeLabelToView: headerView];
     [self addScoreLabelToView: headerView];
     
@@ -126,8 +127,12 @@
     [self addLabel: @"Station" toView: headerView startingAtXPos: 0];
 }
 
+- (void) addDiceLabelToView: (UIView *) headerView {
+    [self addLabel: @"Roll" toView: headerView startingAtXPos: 80];
+}
+
 - (void) addSizeLabelToView: (UIView *) headerView {
-    [self addLabel: @"Size" toView: headerView startingAtXPos: 120];
+    [self addLabel: @"Size" toView: headerView startingAtXPos: 130];
 }
 
 - (void) addScoreLabelToView: (UIView *) headerView {
