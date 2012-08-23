@@ -36,14 +36,12 @@
 }
 
 -(void) runOneCycle {
-    int diceRoll = arc4random_uniform(6) + 1;
-    int amountToAdd = [partsBin reduceInventoryBy: diceRoll];
+    int amountToAdd = [partsBin selectInventoryToRemove];
     
     for (Station *station in stationData) {
         [station increaseInventoryBy: amountToAdd];
-        diceRoll = arc4random_uniform(6) + 1;
         if (station != [stationData lastObject]) {
-            amountToAdd = [station reduceInventoryBy: diceRoll];
+            amountToAdd = [station selectInventoryToRemove];
         }
     }
     

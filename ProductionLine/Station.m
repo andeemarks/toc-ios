@@ -13,6 +13,7 @@
 @synthesize score;
 @synthesize size;
 @synthesize number;
+@synthesize dice;
 
 -(id) initWithId:(int) myNumber andSize: (int) mySize {
     self = [super init];
@@ -40,6 +41,11 @@
     return [NSString stringWithFormat:@"Station: %d Size: %d Score: %d", number, size, score];
 }
 
+-(int) selectInventoryToRemove {
+    dice = arc4random_uniform(6) + 1;
+    return [self reduceInventoryBy: dice];
+}
+            
 -(int) reduceInventoryBy:(int) amountToReduce {
     if (size - amountToReduce < 0) {
         amountToReduce = size;
