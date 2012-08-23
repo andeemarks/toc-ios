@@ -35,14 +35,23 @@
     return self;
 }
 
--(void) runOneCycle {
-    int amountToAdd = [partsBin selectInventoryToRemove];
+-(Station *) getSourceStationForStationId: (int)destinationStationId {
+    if (destinationStationId == 0) {
+        return partsBin;
+    }
     
+    return [stationData objectAtIndex: destinationStationId - 1];
+}
+
+-(void) runOneCycle {
+    int stationIndex = 0;
     for (Station *station in stationData) {
-        [station increaseInventoryBy: amountToAdd];
-        if (station != [stationData lastObject]) {
-            amountToAdd = [station selectInventoryToRemove];
+        Station *sourceStation = [self getSourceStationForStationId: stationIndex];
+        if (![sourceStation isEmpty]) {
+            int amountToAdd = [sourceStation selectInventoryToRemove];
+            [station increaseInventoryBy: amountToAdd];
         }
+        stationIndex++;
     }
     
     cycleCount++;
