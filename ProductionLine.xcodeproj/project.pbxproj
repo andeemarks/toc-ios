@@ -37,7 +37,6 @@
 		8D67217715E768B600A357DE /* thumbs_000618-blue-chrome-rain-icon-media-a-media26-arrows-skip-forward.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D67216415E768B600A357DE /* thumbs_000618-blue-chrome-rain-icon-media-a-media26-arrows-skip-forward.png */; };
 		8D67217E15E768C000A357DE /* FactorySetupController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D67217915E768C000A357DE /* FactorySetupController.m */; };
 		8D67217F15E768C000A357DE /* ProductionLineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D67217B15E768C000A357DE /* ProductionLineController.m */; };
-		8D67218015E768C000A357DE /* StationTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D67217D15E768C000A357DE /* StationTableController.m */; };
 		8D67218515E768CC00A357DE /* ProductionLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D67218215E768CC00A357DE /* ProductionLine.m */; };
 		8D67218615E768CC00A357DE /* Station.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D67218415E768CC00A357DE /* Station.m */; };
 /* End PBXBuildFile section */
@@ -80,8 +79,6 @@
 		8D67217915E768C000A357DE /* FactorySetupController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FactorySetupController.m; path = controllers/FactorySetupController.m; sourceTree = "<group>"; };
 		8D67217A15E768C000A357DE /* ProductionLineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductionLineController.h; path = controllers/ProductionLineController.h; sourceTree = "<group>"; };
 		8D67217B15E768C000A357DE /* ProductionLineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductionLineController.m; path = controllers/ProductionLineController.m; sourceTree = "<group>"; };
-		8D67217C15E768C000A357DE /* StationTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StationTableController.h; path = controllers/StationTableController.h; sourceTree = "<group>"; };
-		8D67217D15E768C000A357DE /* StationTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StationTableController.m; path = controllers/StationTableController.m; sourceTree = "<group>"; };
 		8D67218115E768CC00A357DE /* ProductionLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductionLine.h; path = domain/ProductionLine.h; sourceTree = "<group>"; };
 		8D67218215E768CC00A357DE /* ProductionLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductionLine.m; path = domain/ProductionLine.m; sourceTree = "<group>"; };
 		8D67218315E768CC00A357DE /* Station.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Station.h; path = domain/Station.h; sourceTree = "<group>"; };
@@ -200,8 +197,6 @@
 				8D67217915E768C000A357DE /* FactorySetupController.m */,
 				8D67217A15E768C000A357DE /* ProductionLineController.h */,
 				8D67217B15E768C000A357DE /* ProductionLineController.m */,
-				8D67217C15E768C000A357DE /* StationTableController.h */,
-				8D67217D15E768C000A357DE /* StationTableController.m */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -320,7 +315,6 @@
 				8D67215015E7689200A357DE /* StationStatusCell.m in Sources */,
 				8D67217E15E768C000A357DE /* FactorySetupController.m in Sources */,
 				8D67217F15E768C000A357DE /* ProductionLineController.m in Sources */,
-				8D67218015E768C000A357DE /* StationTableController.m in Sources */,
 				8D67218515E768CC00A357DE /* ProductionLine.m in Sources */,
 				8D67218615E768CC00A357DE /* Station.m in Sources */,
 			);

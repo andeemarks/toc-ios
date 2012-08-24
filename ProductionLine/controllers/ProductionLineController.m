@@ -11,6 +11,7 @@
 #import "Station.h"
 #import "ProductionLine.h"
 #import <stdlib.h>
+#import <UIKit/UIKit.h>
 
 @implementation ProductionLineController
 
@@ -105,6 +106,13 @@
     UIImageView *imv = [[UIImageView alloc] initWithFrame:CGRectMake(80, 0, 20, 20)];
     imv.image = [UIImage imageNamed:[NSString stringWithFormat: @"Dice%d.png", [previousStation dice]]];
     [cell.contentView addSubview:imv];
+    
+    CGRect sizeBar = CGRectMake(0, 0, [station size], 20);
+    UIView *sizeBarView = [[UIView alloc] initWithFrame: sizeBar];
+    [cell setNeedsDisplay];
+    [[UIColor blueColor] set]; 
+	UIRectFill(sizeBar);
+    [cell.contentView addSubview: sizeBarView];
 }
 
 #pragma mark Header Stuff
