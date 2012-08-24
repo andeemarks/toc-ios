@@ -88,7 +88,7 @@
     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     int rowIndex = [indexPath indexAtPosition: 1];
     Station *station = [line stationAtIndex: rowIndex];
-    Station *previousStation = rowIndex == 0 ? [line partsBin] : [line stationAtIndex: rowIndex - 1];
+    Station *previousStation = [line getSourceStationForStationId: rowIndex];
                         
     [self updateCell: (StationStatusCell*) cell fromStation: station previousStation: previousStation];
 
