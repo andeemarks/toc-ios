@@ -12,7 +12,7 @@
 
 @property int number;
 @property int size;
-@property int score;
+@property float score;
 @property int dice;
 
 -(id) initWithId:(int) myNumber;

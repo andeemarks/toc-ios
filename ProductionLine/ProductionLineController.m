@@ -96,7 +96,7 @@
 - (void) updateCell:(StationStatusCell *) cell fromStation:(Station *) station {
     cell.number.text = [NSString stringWithFormat: @"%d", [station number]];
     cell.size.text =   [NSString stringWithFormat: @"%d", [station size]];
-    cell.score.text =  [NSString stringWithFormat: @"%d", [station score]];
+    cell.score.text =  [NSString stringWithFormat: @"%.1f", [station score]];
     
     UIImageView *imv = [[UIImageView alloc]initWithFrame:CGRectMake(80, 10, 20, 20)];
     imv.image = [UIImage imageNamed:[NSString stringWithFormat: @"Dice%d.png", [station dice]]];

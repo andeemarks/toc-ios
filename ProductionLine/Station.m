@@ -20,6 +20,7 @@
     if (self) {
         self.number = myNumber;
         self.size = mySize;
+        self.score = 0.0f;
     }
 
     return self;
@@ -59,7 +60,7 @@
 -(void) increaseInventoryBy:(int) amountToIncrease {
     size += amountToIncrease;
 
-    score += (amountToIncrease - 3.5);
+    score += ((float)amountToIncrease - 3.5);
 }
 
 @end
