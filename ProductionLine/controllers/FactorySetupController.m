@@ -90,7 +90,8 @@ static int inventorySizeValues[6] = {25, 50, 75, 100, 125, 150};
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation != UIInterfaceOrientationPortrait);
+    return (interfaceOrientation == UIInterfaceOrientationPortrait || 
+            interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown );
 }
 
 - (void)persistSetup 
