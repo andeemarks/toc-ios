@@ -14,6 +14,7 @@
 @synthesize size;
 @synthesize number;
 @synthesize dice;
+@synthesize changes;
 
 -(id) initWithId:(int) myNumber andSize: (int) mySize {
     self = [super init];
@@ -21,6 +22,7 @@
         self.number = myNumber;
         self.size = mySize;
         self.score = 0.0f;
+        self.changes = [[NSMutableString alloc] initWithCapacity:10];
     }
 
     return self;
@@ -54,13 +56,20 @@
     
     size -= amountToReduce;
     
+    [changes appendFormat: @", -%d", amountToReduce];
+    
     return amountToReduce;
 }
 
 -(void) increaseInventoryBy:(int) amountToIncrease {
     size += amountToIncrease;
 
+    changes = [NSMutableString stringWithFormat: @"+%d", amountToIncrease];
+    
     score += ((float)amountToIncrease - 3.5);
 }
 
+-(NSString *) recentChanges {
+    return changes;
+}
 @end

@@ -12,6 +12,7 @@
 
 @synthesize number;
 @synthesize score;
+@synthesize changes;
 @synthesize size;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

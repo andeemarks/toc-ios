@@ -14,10 +14,13 @@
 @property int size;
 @property float score;
 @property int dice;
+@property (strong, nonatomic) NSMutableString *changes;
 
 -(id) initWithId:(int) myNumber;
 -(id) initWithSize:(int) mySize;
 -(void) increaseInventoryBy:(int) amountToIncrease;
 -(int) selectInventoryToRemove;
 -(BOOL) isEmpty;
+-(NSString *) recentChanges;
+
 @end

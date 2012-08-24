@@ -98,7 +98,7 @@
 							<object class="IBUILabel" id="683979988">
 								<reference key="NSNextResponder" ref="1008285933"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{210, 0}, {42, 21}}</string>
+								<string key="NSFrame">{{217, 0}, {42, 21}}</string>
 								<reference key="NSSuperview" ref="1008285933"/>
 								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -108,6 +108,27 @@
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<string key="IBUIText">Score</string>
+								<reference key="IBUITextColor" ref="239315359"/>
+								<reference key="IBUIHighlightedColor" ref="608328870"/>
+								<int key="IBUIBaselineAdjustment">0</int>
+								<float key="IBUIMinimumFontSize">12</float>
+								<int key="IBUITextAlignment">2</int>
+								<reference key="IBUIFontDescription" ref="375921015"/>
+								<reference key="IBUIFont" ref="71586687"/>
+							</object>
+							<object class="IBUILabel" id="231757585">
+								<reference key="NSNextResponder" ref="1008285933"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{161, 0}, {46, 21}}</string>
+								<reference key="NSSuperview" ref="1008285933"/>
+								<reference key="NSWindow"/>
+								<string key="NSReuseIdentifierKey">_NS:9</string>
+								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIClipsSubviews">YES</bool>
+								<int key="IBUIContentMode">7</int>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<string key="IBUIText">Changes</string>
 								<reference key="IBUITextColor" ref="239315359"/>
 								<reference key="IBUIHighlightedColor" ref="608328870"/>
 								<int key="IBUIBaselineAdjustment">0</int>
@@ -173,6 +194,14 @@
 					</object>
 					<int key="connectionID">11</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">changes</string>
+						<reference key="source" ref="696123896"/>
+						<reference key="destination" ref="231757585"/>
+					</object>
+					<int key="connectionID">16</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -200,6 +229,7 @@
 							<reference ref="683979988"/>
 							<reference ref="845156441"/>
 							<reference ref="863890137"/>
+							<reference ref="231757585"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -218,12 +248,18 @@
 						<reference key="object" ref="863890137"/>
 						<reference key="parent" ref="696123896"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">15</int>
+						<reference key="object" ref="231757585"/>
+						<reference key="parent" ref="696123896"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
 				<string key="-1.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="-2.CustomClassName">UIResponder</string>
 				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="15.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="3.CustomClassName">StationStatusCell</string>
 				<string key="3.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="4.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -234,7 +270,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">14</int>
+			<int key="maxID">16</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -242,11 +278,16 @@
 					<string key="className">StationStatusCell</string>
 					<string key="superclassName">UITableViewCell</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="changes">UILabel</string>
 						<string key="number">UILabel</string>
 						<string key="score">UILabel</string>
 						<string key="size">UILabel</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="changes">
+							<string key="name">changes</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="number">
 							<string key="name">number</string>
 							<string key="candidateClassName">UILabel</string>

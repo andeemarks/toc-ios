@@ -97,6 +97,7 @@
     cell.number.text = [NSString stringWithFormat: @"%d", [station number]];
     cell.size.text =   [NSString stringWithFormat: @"%d", [station size]];
     cell.score.text =  [NSString stringWithFormat: @"%.1f", [station score]];
+    cell.changes.text =[station recentChanges];
     
     UIImageView *imv = [[UIImageView alloc]initWithFrame:CGRectMake(80, 10, 20, 20)];
     imv.image = [UIImage imageNamed:[NSString stringWithFormat: @"Dice%d.png", [station dice]]];
@@ -111,6 +112,7 @@
     [self addStationLabelToView: headerView];
     [self addDiceLabelToView: headerView];
     [self addSizeLabelToView: headerView];
+    [self addChangesLabelToView: headerView];
     [self addScoreLabelToView: headerView];
     
     return headerView;
@@ -141,6 +143,10 @@
 
 - (void) addScoreLabelToView: (UIView *) headerView {
     [self addLabel: @"Score" toView: headerView startingAtXPos: 230];
+}
+
+- (void) addChangesLabelToView: (UIView *) headerView {
+    [self addLabel: @"Changes" toView: headerView startingAtXPos: 160];
 }
 
 -(float)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
