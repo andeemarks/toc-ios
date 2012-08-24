@@ -116,7 +116,7 @@
 								<reference key="IBUIFontDescription" ref="375921015"/>
 								<reference key="IBUIFont" ref="71586687"/>
 							</object>
-							<object class="IBUILabel" id="231757585">
+							<object class="IBUILabel" id="978681967">
 								<reference key="NSNextResponder" ref="1008285933"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{161, 0}, {46, 21}}</string>
@@ -198,7 +198,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">changes</string>
 						<reference key="source" ref="696123896"/>
-						<reference key="destination" ref="231757585"/>
+						<reference key="destination" ref="978681967"/>
 					</object>
 					<int key="connectionID">16</int>
 				</object>
@@ -229,7 +229,7 @@
 							<reference ref="683979988"/>
 							<reference ref="845156441"/>
 							<reference ref="863890137"/>
-							<reference ref="231757585"/>
+							<reference ref="978681967"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -250,7 +250,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">15</int>
-						<reference key="object" ref="231757585"/>
+						<reference key="object" ref="978681967"/>
 						<reference key="parent" ref="696123896"/>
 					</object>
 				</array>

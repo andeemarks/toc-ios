@@ -86,28 +86,31 @@
     UITableViewCell *cell = [self findCellForPath: indexPath];
     
     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-    Station *station = [line stationAtIndex: [indexPath indexAtPosition: 1]];
+    int rowIndex = [indexPath indexAtPosition: 1];
+    Station *station = [line stationAtIndex: rowIndex];
+    Station *previousStation = rowIndex == 0 ? [line partsBin] : [line stationAtIndex: rowIndex - 1];
                         
-    [self updateCell: (StationStatusCell*) cell fromStation: station];
+    [self updateCell: (StationStatusCell*) cell fromStation: station previousStation: previousStation];
 
     return cell;
 }
 
-- (void) updateCell:(StationStatusCell *) cell fromStation:(Station *) station {
+- (void) updateCell:(StationStatusCell *) cell fromStation:(Station *) station previousStation: (Station *) previousStation {
     cell.number.text = [NSString stringWithFormat: @"%d", [station number]];
     cell.size.text =   [NSString stringWithFormat: @"%d", [station size]];
     cell.score.text =  [NSString stringWithFormat: @"%.1f", [station score]];
     cell.changes.text =[station recentChanges];
     
-    UIImageView *imv = [[UIImageView alloc]initWithFrame:CGRectMake(80, 10, 20, 20)];
-    imv.image = [UIImage imageNamed:[NSString stringWithFormat: @"Dice%d.png", [station dice]]];
+    UIImageView *imv = [[UIImageView alloc] initWithFrame:CGRectMake(80, 0, 20, 20)];
+    imv.image = [UIImage imageNamed:[NSString stringWithFormat: @"Dice%d.png", [previousStation dice]]];
     [cell.contentView addSubview:imv];
 }
 
 #pragma mark Header Stuff
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,tableView.frame.size.width,20)];
+    UIView *headerView = [[UIView alloc] 
+                          initWithFrame:CGRectMake(0,0,tableView.frame.size.width,20)];
     
     [self addStationLabelToView: headerView];
     [self addDiceLabelToView: headerView];
@@ -119,7 +122,8 @@
 }
 
 - (void) addLabel: (NSString *) text toView: (UIView *)view startingAtXPos: (NSInteger) startXPos {
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(startXPos, 0, 200, view.frame.size.height)];
+    UILabel *label = [[UILabel alloc] 
+                      initWithFrame:CGRectMake(startXPos, 0, 200, view.frame.size.height)];
     
     label.text = text;
     label.backgroundColor = [UIColor whiteColor];
