@@ -13,7 +13,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *number;
 @property (strong, nonatomic) IBOutlet UILabel *size;
 @property (strong, nonatomic) IBOutlet UILabel *score;
-@property (strong, nonatomic) IBOutlet UIImageView *dice;
-
+@property (strong, nonatomic) IBOutlet UILabel *changes;
 
 @end

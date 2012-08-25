@@ -13,12 +13,16 @@
 @synthesize score;
 @synthesize size;
 @synthesize number;
+@synthesize dice;
+@synthesize changes;
 
 -(id) initWithId:(int) myNumber andSize: (int) mySize {
     self = [super init];
     if (self) {
         self.number = myNumber;
         self.size = mySize;
+        self.score = 0.0f;
+        self.changes = [[NSMutableString alloc] initWithCapacity:10];
     }
 
     return self;
@@ -40,6 +44,11 @@
     return [NSString stringWithFormat:@"Station: %d Size: %d Score: %d", number, size, score];
 }
 
+-(int) selectInventoryToRemove {
+    dice = arc4random_uniform(6) + 1;
+    return [self reduceInventoryBy: dice];
+}
+            
 -(int) reduceInventoryBy:(int) amountToReduce {
     if (size - amountToReduce < 0) {
         amountToReduce = size;
@@ -47,13 +56,20 @@
     
     size -= amountToReduce;
     
+    [changes appendFormat: @", -%d", amountToReduce];
+    
     return amountToReduce;
 }
 
 -(void) increaseInventoryBy:(int) amountToIncrease {
     size += amountToIncrease;
 
-    score += (amountToIncrease - 3.5);
+    changes = [NSMutableString stringWithFormat: @"+%d", amountToIncrease];
+    
+    score += ((float)amountToIncrease - 3.5);
 }
 
+-(NSString *) recentChanges {
+    return changes;
+}
 @end

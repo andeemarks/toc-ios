@@ -24,5 +24,6 @@
 -(int) completedInventory;
 -(int) unprocessedInventory;
 - (BOOL) hasUnprocessedInventory;
+-(Station *) getSourceStationForStationId: (int)destinationStationId;
 
 @end

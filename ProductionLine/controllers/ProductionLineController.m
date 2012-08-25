@@ -11,6 +11,7 @@
 #import "Station.h"
 #import "ProductionLine.h"
 #import <stdlib.h>
+#import <UIKit/UIKit.h>
 
 @implementation ProductionLineController
 
@@ -52,7 +53,8 @@
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    return (interfaceOrientation == UIInterfaceOrientationPortrait || 
+            interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown );
 }
 
 #pragma mark Table Stuff
@@ -86,35 +88,51 @@
     UITableViewCell *cell = [self findCellForPath: indexPath];
     
     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-    Station *station = [line stationAtIndex: [indexPath indexAtPosition: 1]];
+    int rowIndex = [indexPath indexAtPosition: 1];
+    Station *station = [line stationAtIndex: rowIndex];
+    Station *previousStation = [line getSourceStationForStationId: rowIndex];
                         
-    [self updateCell: (StationStatusCell*) cell fromStation: station];
+    [self updateCell: (StationStatusCell*) cell fromStation: station previousStation: previousStation];
 
     return cell;
 }
 
-- (void) updateCell:(StationStatusCell *) cell fromStation:(Station *) station {
+- (void) updateCell:(StationStatusCell *) cell fromStation:(Station *) station previousStation: (Station *) previousStation {
     cell.number.text = [NSString stringWithFormat: @"%d", [station number]];
     cell.size.text =   [NSString stringWithFormat: @"%d", [station size]];
-    cell.score.text =  [NSString stringWithFormat: @"%d", [station score]];
-    cell.dice.image =  [UIImage imageNamed:@"Dice.png"];
+    cell.score.text =  [NSString stringWithFormat: @"%.1f", [station score]];
+    cell.changes.text =[station recentChanges];
+    
+    UIImageView *imv = [[UIImageView alloc] initWithFrame:CGRectMake(80, 0, 20, 20)];
+    imv.image = [UIImage imageNamed:[NSString stringWithFormat: @"Dice%d.png", [previousStation dice]]];
+    [cell.contentView addSubview:imv];
+    
+    CGRect sizeBar = CGRectMake(0, 0, [station size], 20);
+    UIView *sizeBarView = [[UIView alloc] initWithFrame: sizeBar];
+    [cell setNeedsDisplay];
+    [[UIColor blueColor] set]; 
+	UIRectFill(sizeBar);
+    [cell.contentView addSubview: sizeBarView];
 }
 
 #pragma mark Header Stuff
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,tableView.frame.size.width,20)];
+    UIView *headerView = [[UIView alloc] 
+                          initWithFrame:CGRectMake(0,0,tableView.frame.size.width,20)];
     
     [self addStationLabelToView: headerView];
     [self addDiceLabelToView: headerView];
     [self addSizeLabelToView: headerView];
+    [self addChangesLabelToView: headerView];
     [self addScoreLabelToView: headerView];
     
     return headerView;
 }
 
 - (void) addLabel: (NSString *) text toView: (UIView *)view startingAtXPos: (NSInteger) startXPos {
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(startXPos, 0, 200, view.frame.size.height)];
+    UILabel *label = [[UILabel alloc] 
+                      initWithFrame:CGRectMake(startXPos, 0, 200, view.frame.size.height)];
     
     label.text = text;
     label.backgroundColor = [UIColor whiteColor];
@@ -138,6 +156,10 @@
 
 - (void) addScoreLabelToView: (UIView *) headerView {
     [self addLabel: @"Score" toView: headerView startingAtXPos: 230];
+}
+
+- (void) addChangesLabelToView: (UIView *) headerView {
+    [self addLabel: @"Changes" toView: headerView startingAtXPos: 160];
 }
 
 -(float)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
