@@ -12,9 +12,10 @@
 @interface ProductionLineRunMetrics : NSObject <NSURLConnectionDelegate>
 
 -(id) initWithProductionLine:(ProductionLine *) line;
--(NSNumber *) save;
 
 @property (strong) NSMutableData *response;
 @property (strong) ProductionLine *line;
+
+-(BOOL) saveWithError:(NSError **) theError;
 
 @end

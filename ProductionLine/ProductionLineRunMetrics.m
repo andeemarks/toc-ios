@@ -28,7 +28,6 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    //    NSLog(@"Received %@", data);
     [response appendData: data];
 }
 
@@ -42,7 +41,7 @@
           [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
 }
 
--(NSNumber *) save {
+-(BOOL)saveWithError:(NSError **) outError {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://localhost:9393/productionline/run"]];
     [request setHTTPMethod:@"POST"];
     
@@ -52,12 +51,11 @@
     
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     if (connection) {
-        NSLog(@"Successful creation of connection to REST service");
+        return YES;
     } else {
-        NSLog(@"Unable to create connection to REST service");
+        *outError = [[NSError alloc] initWithDomain:NSURLErrorDomain code:NSURLErrorCannotConnectToHost userInfo:nil];
+        return NO;
     }
-    
-    return 0;
 }
 
 @end

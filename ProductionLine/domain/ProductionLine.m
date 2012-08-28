@@ -80,6 +80,11 @@
 
 -(void) completeRun {
     ProductionLineRunMetrics *metrics = [[ProductionLineRunMetrics alloc] initWithProductionLine: self];
-    [metrics save];
+    NSError *saveError;
+    BOOL isSaveSuccessful = [metrics saveWithError:&saveError];
+    
+    if (isSaveSuccessful == NO) {
+        NSLog(@"%@", saveError);
+    }
 }
 @end
