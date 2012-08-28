@@ -12,14 +12,13 @@ get '/productionline/runs' do
 end
 
 post '/productionline/run' do
-  runs = @@db['runs']
   request.body.rewind
-
   run = JSON.parse request.body.read
-  logger.info("New run to insert: " + run.to_s)
-  puts("New run to insert: " + run.to_s)
 
+  runs = @@db['runs']
   runs.insert(run) if run
 
+  status 201
+  content_type 'application/json'
   erb :new, :format => :json, :locals => { :run => run }
 end
