@@ -26,5 +26,6 @@
 -(int) unprocessedInventory;
 - (BOOL) hasUnprocessedInventory;
 -(Station *) getSourceStationForStationId: (int)destinationStationId;
+-(NSString *)toJSON;
 
 @end

@@ -45,11 +45,7 @@
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://localhost:9393/productionline/run"]];
     [request setHTTPMethod:@"POST"];
     
-    NSString *jsonString = [NSString stringWithFormat: @"{\"number_of_stations\" : %i, \"initial_inventory_size\" : %i, \"cycle_count\" : %i  }", 
-                            [line numberOfStations], 
-                            [line inventory], 
-                            [line cycleCount]];
-    NSData *requestData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *requestData = [[line toJSON] dataUsingEncoding:NSUTF8StringEncoding];
     [request setHTTPBody: requestData];
     
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];

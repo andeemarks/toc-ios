@@ -87,4 +87,12 @@
         NSLog(@"%@", saveError);
     }
 }
+
+-(NSString *)toJSON {
+    return [NSString stringWithFormat: @"{\"number_of_stations\" : %i, \"initial_inventory_size\" : %i, \"cycle_count\" : %i  }", 
+            [self numberOfStations], 
+            [self inventory], 
+            [self cycleCount]];
+}
+
 @end
