@@ -70,6 +70,9 @@
 }
 
 -(NSString *) recentChanges {
-    return changes;
+    NSString *recentChanges = changes;
+    changes = [NSMutableString stringWithFormat: @""];
+     
+    return recentChanges;
 }
 @end
