@@ -96,7 +96,7 @@
 
     [json appendString: @", \"stations\" : ["];
     for (Station *station in stationData) {
-        [json appendFormat: @"{\"number\": %i, \"score\": %i, \"size\": %i} ", [station number], [station score], [station size]];
+        [json appendFormat: @"{\"number\": %i, \"score\": %.1f, \"size\": %i} ", [station number], [station score], [station size]];
         [json appendFormat: (station == [stationData lastObject]) ? @"" : @", "];
     }
     [json appendString: @"]}"];
