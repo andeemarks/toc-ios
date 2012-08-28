@@ -6,9 +6,7 @@
 <% runs.find.each_with_index {|run, index| %>
   <em><%= "Run: " + (index + 1).to_s %></em>
   <br>
-  <%= "Number of stations: " + run["number_of_stations"].to_i.to_s %>
-  <br>
-  <%= "Initial inventory size: " + run["initial_inventory_size"].to_i.to_s %>
+  <%= run %>
   <br>
 <% } %>
 

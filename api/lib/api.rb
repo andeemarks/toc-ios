@@ -2,6 +2,7 @@ require 'mongo'
 require 'sinatra'
 require 'json'
 
+use Rack::Logger
 @@conn = Mongo::Connection.new
 @@db   = @@conn['toc']
 
@@ -20,5 +21,12 @@ post '/productionline/run' do
 
   status 201
   content_type 'application/json'
-  erb :new, :format => :json, :locals => { :run => run }
+  logger.info("Adding new run: " + run.to_s)
+  erb :new, :format => :json, :locals => { :run => JSON.pretty_generate(run) }
+end
+
+helpers do
+  def logger
+    request.logger
+  end
 end
