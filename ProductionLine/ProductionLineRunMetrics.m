@@ -24,7 +24,9 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)theResponse {
-    NSLog(@"Received response %@", theResponse);
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)theResponse;
+    
+    NSLog(@"Received response status code %i", [httpResponse statusCode]);
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
@@ -32,7 +34,7 @@
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"Finished loading - response = %@", [self response]);
+//    NSLog(@"Finished loading - response = %@", [self response]);
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
