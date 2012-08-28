@@ -89,10 +89,10 @@
 }
 
 -(NSString *)toJSON {
-    NSMutableString *json = [[NSMutableString alloc] initWithString: [NSString stringWithFormat: @"{\"number_of_stations\" : %i, \"initial_inventory_size\" : %i, \"cycle_count\" : %i", 
+    NSMutableString *json = [NSMutableString stringWithFormat: @"{\"number_of_stations\" : %i, \"initial_inventory_size\" : %i, \"cycle_count\" : %i", 
             [self numberOfStations], 
             [self inventory], 
-            [self cycleCount]]];
+            [self cycleCount]];
 
     [json appendString: @", \"stations\" : ["];
     for (Station *station in stationData) {
