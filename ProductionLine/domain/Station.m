@@ -41,7 +41,7 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"Station: %d Size: %d Score: %d", number, size, score];
+    return [NSString stringWithFormat:@"Station: %d Size: %d Score: %d Changes: %@", number, size, score, changes];
 }
 
 -(int) selectInventoryToRemove {

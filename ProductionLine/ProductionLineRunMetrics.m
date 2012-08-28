@@ -44,9 +44,7 @@
 -(BOOL)saveWithError:(NSError **) outError {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://localhost:9393/productionline/run"]];
     [request setHTTPMethod:@"POST"];
-    
-    NSData *requestData = [[line toJSON] dataUsingEncoding:NSUTF8StringEncoding];
-    [request setHTTPBody: requestData];
+    [request setHTTPBody: [[line toJSON] dataUsingEncoding:NSUTF8StringEncoding]];
     
     NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     if (connection) {

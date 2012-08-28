@@ -89,10 +89,19 @@
 }
 
 -(NSString *)toJSON {
-    return [NSString stringWithFormat: @"{\"number_of_stations\" : %i, \"initial_inventory_size\" : %i, \"cycle_count\" : %i  }", 
+    NSMutableString *json = [[NSMutableString alloc] initWithString: [NSString stringWithFormat: @"{\"number_of_stations\" : %i, \"initial_inventory_size\" : %i, \"cycle_count\" : %i", 
             [self numberOfStations], 
             [self inventory], 
-            [self cycleCount]];
+            [self cycleCount]]];
+
+    [json appendString: @", \"stations\" : ["];
+    for (Station *station in stationData) {
+        [json appendFormat: @"{\"number\": %i, \"score\": %i, \"size\": %i} ", [station number], [station score], [station size]];
+        [json appendFormat: (station == [stationData lastObject]) ? @"" : @", "];
+    }
+    [json appendString: @"]}"];
+
+    return json;
 }
 
 @end
