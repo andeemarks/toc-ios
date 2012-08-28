@@ -8,6 +8,7 @@
 
 #import "ProductionLine.h"
 #import "Station.h"
+#import "ProductionLineRunMetrics.h"
 
 @implementation ProductionLine
 
@@ -75,5 +76,10 @@
 
 - (int) completedInventory {
     return ((Station *)stationData.lastObject).size;
+}
+
+-(void) completeRun {
+    ProductionLineRunMetrics *metrics = [[ProductionLineRunMetrics alloc] initWithProductionLine: self];
+    [metrics save];
 }
 @end

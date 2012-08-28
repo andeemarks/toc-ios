@@ -12,6 +12,8 @@
 #import "ProductionLine.h"
 #import <stdlib.h>
 #import <UIKit/UIKit.h>
+#import <Foundation/NSURLRequest.h>
+#import <Foundation/NSURLConnection.h>
 
 @implementation ProductionLineController
 
@@ -38,7 +40,6 @@
     [fastForwardButton setEnabled: TRUE];
     cycleCountLabel.text = [NSString stringWithFormat: @"%i", [line cycleCount]];
     [self updateInventoryLabels];
-    
 }
 
 - (void)viewDidUnload {
@@ -107,12 +108,12 @@
     imv.image = [UIImage imageNamed:[NSString stringWithFormat: @"Dice%d.png", [previousStation dice]]];
     [cell.contentView addSubview:imv];
     
-    CGRect sizeBar = CGRectMake(0, 0, [station size], 20);
-    UIView *sizeBarView = [[UIView alloc] initWithFrame: sizeBar];
-    [cell setNeedsDisplay];
-    [[UIColor blueColor] set]; 
-	UIRectFill(sizeBar);
-    [cell.contentView addSubview: sizeBarView];
+//    CGRect sizeBar = CGRectMake(0, 0, [station size], 20);
+//    UIView *sizeBarView = [[UIView alloc] initWithFrame: sizeBar];
+//    [cell setNeedsDisplay];
+//    [[UIColor blueColor] set]; 
+//	UIRectFill(sizeBar);
+//    [cell.contentView addSubview: sizeBarView];
 }
 
 #pragma mark Header Stuff
@@ -194,6 +195,11 @@
     }
 }
 
+- (void)lineFinished {
+    [playButton setEnabled: FALSE];
+    [fastForwardButton setEnabled: FALSE];
+    
+}
 
 - (IBAction)play:(id)sender {
     [line runOneCycle];
@@ -201,8 +207,7 @@
     [self updateInventoryLabels];
     
     if ([line isFinished]) {
-        [playButton setEnabled: FALSE];
-        [fastForwardButton setEnabled: FALSE];
+        [self lineFinished];
     }
     
     cycleCountLabel.text = [NSString stringWithFormat: @"%i", [line cycleCount]];
@@ -212,6 +217,8 @@
     while (![line isFinished]) {
         [self play: sender];
     }
+    
+    [line completeRun];
 }
 
 @end

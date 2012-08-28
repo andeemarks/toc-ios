@@ -18,6 +18,7 @@
 @property (nonatomic) NSInteger cycleCount;
 
 -(void) runOneCycle;
+-(void) completeRun;
 -(id) initWithNumberOfStations:(int) theNumberOfStations andInventory: (int) theInventory;
 -(Station *) stationAtIndex: (int) index;
 -(BOOL) isFinished;

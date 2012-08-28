@@ -39,6 +39,7 @@
 		8D67217F15E768C000A357DE /* ProductionLineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D67217B15E768C000A357DE /* ProductionLineController.m */; };
 		8D67218515E768CC00A357DE /* ProductionLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D67218215E768CC00A357DE /* ProductionLine.m */; };
 		8D67218615E768CC00A357DE /* Station.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D67218415E768CC00A357DE /* Station.m */; };
+		8D67219815EC87C600A357DE /* ProductionLineRunMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D67219715EC87C600A357DE /* ProductionLineRunMetrics.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,8 @@
 		8D67218215E768CC00A357DE /* ProductionLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductionLine.m; path = domain/ProductionLine.m; sourceTree = "<group>"; };
 		8D67218315E768CC00A357DE /* Station.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Station.h; path = domain/Station.h; sourceTree = "<group>"; };
 		8D67218415E768CC00A357DE /* Station.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Station.m; path = domain/Station.m; sourceTree = "<group>"; };
+		8D67219615EC87C600A357DE /* ProductionLineRunMetrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductionLineRunMetrics.h; sourceTree = "<group>"; };
+		8D67219715EC87C600A357DE /* ProductionLineRunMetrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductionLineRunMetrics.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +163,8 @@
 				8D67218215E768CC00A357DE /* ProductionLine.m */,
 				8D67218315E768CC00A357DE /* Station.h */,
 				8D67218415E768CC00A357DE /* Station.m */,
+				8D67219615EC87C600A357DE /* ProductionLineRunMetrics.h */,
+				8D67219715EC87C600A357DE /* ProductionLineRunMetrics.m */,
 			);
 			name = domain;
 			sourceTree = "<group>";
@@ -317,6 +322,7 @@
 				8D67217F15E768C000A357DE /* ProductionLineController.m in Sources */,
 				8D67218515E768CC00A357DE /* ProductionLine.m in Sources */,
 				8D67218615E768CC00A357DE /* Station.m in Sources */,
+				8D67219815EC87C600A357DE /* ProductionLineRunMetrics.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
