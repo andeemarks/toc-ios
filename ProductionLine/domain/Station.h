@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "StationChangeMetrics.h"
 
 @interface Station : NSObject
 
@@ -14,7 +15,7 @@
 @property int size;
 @property float score;
 @property int dice;
-@property (strong, nonatomic) NSMutableString *changes;
+@property (strong, nonatomic) StationChangeMetrics *changes;
 
 -(id) initWithId:(int) myNumber;
 -(id) initWithSize:(int) mySize;

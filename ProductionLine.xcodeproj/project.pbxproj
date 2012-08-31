@@ -40,6 +40,7 @@
 		8D67218515E768CC00A357DE /* ProductionLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D67218215E768CC00A357DE /* ProductionLine.m */; };
 		8D67218615E768CC00A357DE /* Station.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D67218415E768CC00A357DE /* Station.m */; };
 		8D67219815EC87C600A357DE /* ProductionLineRunMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D67219715EC87C600A357DE /* ProductionLineRunMetrics.m */; };
+		8D6721AC15F072FB00A357DE /* StationChangeMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6721AB15F072FB00A357DE /* StationChangeMetrics.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,8 @@
 		8D67218415E768CC00A357DE /* Station.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Station.m; path = domain/Station.m; sourceTree = "<group>"; };
 		8D67219615EC87C600A357DE /* ProductionLineRunMetrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductionLineRunMetrics.h; sourceTree = "<group>"; };
 		8D67219715EC87C600A357DE /* ProductionLineRunMetrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductionLineRunMetrics.m; sourceTree = "<group>"; };
+		8D6721AA15F072FB00A357DE /* StationChangeMetrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StationChangeMetrics.h; path = domain/StationChangeMetrics.h; sourceTree = "<group>"; };
+		8D6721AB15F072FB00A357DE /* StationChangeMetrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StationChangeMetrics.m; path = domain/StationChangeMetrics.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +168,8 @@
 				8D67218415E768CC00A357DE /* Station.m */,
 				8D67219615EC87C600A357DE /* ProductionLineRunMetrics.h */,
 				8D67219715EC87C600A357DE /* ProductionLineRunMetrics.m */,
+				8D6721AA15F072FB00A357DE /* StationChangeMetrics.h */,
+				8D6721AB15F072FB00A357DE /* StationChangeMetrics.m */,
 			);
 			name = domain;
 			sourceTree = "<group>";
@@ -209,17 +214,8 @@
 		8D67218715E76B2B00A357DE /* external */ = {
 			isa = PBXGroup;
 			children = (
-				8D67218815E76B4800A357DE /* RestClient */,
 			);
 			name = external;
-			sourceTree = "<group>";
-		};
-		8D67218815E76B4800A357DE /* RestClient */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = RestClient;
-			path = ../../RestClient/RestClient;
 			sourceTree = "<group>";
 		};
 		8D9CE82515E22911002D410A /* views */ = {
@@ -323,6 +319,7 @@
 				8D67218515E768CC00A357DE /* ProductionLine.m in Sources */,
 				8D67218615E768CC00A357DE /* Station.m in Sources */,
 				8D67219815EC87C600A357DE /* ProductionLineRunMetrics.m in Sources */,
+				8D6721AC15F072FB00A357DE /* StationChangeMetrics.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

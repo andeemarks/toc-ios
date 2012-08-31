@@ -22,7 +22,7 @@
         self.number = myNumber;
         self.size = mySize;
         self.score = 0.0f;
-        self.changes = [[NSMutableString alloc] initWithCapacity:10];
+        self.changes = [[StationChangeMetrics alloc] init];
     }
 
     return self;
@@ -56,7 +56,7 @@
     
     size -= amountToReduce;
     
-    [changes appendFormat: @", -%d", amountToReduce];
+    changes.removed = amountToReduce;
     
     return amountToReduce;
 }
@@ -64,15 +64,12 @@
 -(void) increaseInventoryBy:(int) amountToIncrease {
     size += amountToIncrease;
 
-    changes = [NSMutableString stringWithFormat: @"+%d", amountToIncrease];
+    changes.added = amountToIncrease;
     
     score += ((float)amountToIncrease - 3.5);
 }
 
 -(NSString *) recentChanges {
-    NSString *recentChanges = changes;
-    changes = [NSMutableString stringWithFormat: @""];
-     
-    return recentChanges;
+    return [changes description];
 }
 @end

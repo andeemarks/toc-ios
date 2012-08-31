@@ -24,9 +24,7 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)theResponse {
-    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)theResponse;
-    
-    NSLog(@"Received response status code %i", [httpResponse statusCode]);
+    NSLog(@"Received response status code %i", [(NSHTTPURLResponse *)theResponse statusCode]);
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
@@ -34,7 +32,9 @@
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-//    NSLog(@"Finished loading - response = %@", [self response]);
+    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:response options:kNilOptions error:nil];
+    NSString *saved_run_id = [json objectForKey:@"_id"];
+    NSLog(@"Successfully saved run.  ID = %@", saved_run_id);
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
