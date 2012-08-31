@@ -17,6 +17,7 @@
 @synthesize stationData;
 @synthesize partsBin;
 @synthesize cycleCount;
+@synthesize metrics;
 
 -(id) initWithNumberOfStations:(int) theNumberOfStations andInventory: (int) theInventory {
     self = [super init];
@@ -30,6 +31,7 @@
             [stationData addObject:[[Station alloc] initWithId:n]];
         }
         
+        metrics = [[ProductionLineRunMetrics alloc] initWithProductionLine: self];
         cycleCount = 0;
     }
     
@@ -79,13 +81,14 @@
 }
 
 -(void) completeRun {
-    ProductionLineRunMetrics *metrics = [[ProductionLineRunMetrics alloc] initWithProductionLine: self];
-    NSError *saveError;
-    BOOL isSaveSuccessful = [metrics saveWithError:&saveError];
+    [metrics addObserver: self forKeyPath: @"saveSuccessful" options: NSKeyValueObservingOptionNew context: nil];
     
-    if (isSaveSuccessful == NO) {
-        NSLog(@"%@", saveError);
-    }
+    NSError *saveError;
+    [metrics saveWithError:&saveError];
+}
+
+-(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id) metrics change: (NSDictionary *) change context: (void *) context {
+    NSLog(@"%@", change);
 }
 
 -(NSString *)toJSON {

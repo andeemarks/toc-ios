@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "Station.h"
 
+@class ProductionLineRunMetrics; // forward declaration to prevent circular dependency issue with imports
+
 @interface ProductionLine : NSObject
 
 @property int numberOfStations;
@@ -16,6 +18,7 @@
 @property (nonatomic) NSMutableArray *stationData;
 @property (strong, nonatomic) Station *partsBin;
 @property (nonatomic) NSInteger cycleCount;
+@property (strong, readonly) ProductionLineRunMetrics *metrics;
 
 -(void) runOneCycle;
 -(void) completeRun;

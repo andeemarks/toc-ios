@@ -12,12 +12,14 @@
 
 @synthesize response;
 @synthesize line;
+@synthesize saveSuccessful;
 
 -(id) initWithProductionLine:(ProductionLine *) theLine {
     self = [super init];
     if (self) {
         self.response = [NSMutableData alloc];
         self.line = theLine;
+        self.saveSuccessful = FALSE;
     }
     
     return self;    
@@ -35,12 +37,16 @@
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:response options:kNilOptions error:nil];
     NSString *saved_run_id = [json objectForKey:@"_id"];
     NSLog(@"Successfully saved run.  ID = %@", saved_run_id);
+
+    self.saveSuccessful = TRUE;
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     NSLog(@"Connection failed! Error - %@ %@",
           [error localizedDescription],
           [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+
+    self.saveSuccessful = FALSE;
 }
 
 -(BOOL)saveWithError:(NSError **) outError {

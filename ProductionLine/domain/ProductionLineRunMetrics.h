@@ -15,6 +15,7 @@
 
 @property (strong) NSMutableData *response;
 @property (strong) ProductionLine *line;
+@property (nonatomic) BOOL saveSuccessful;
 
 -(BOOL) saveWithError:(NSError **) theError;
 
