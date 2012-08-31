@@ -1,11 +1,3 @@
-//
-//  FlashMessageView.m
-//  ProductionLine
-//
-//  Created by Andrew Marks on 31/08/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-//
-
 #import "FlashMessageView.h"
 
 @implementation FlashMessageView

@@ -1,11 +1,3 @@
-//
-//  ProductionLineRunMetrics.m
-//  ProductionLine
-//
-//  Created by Andrew Marks on 28/08/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-//
-
 #import "ProductionLineRunMetrics.h"
 
 @implementation ProductionLineRunMetrics
