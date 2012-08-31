@@ -83,7 +83,7 @@
     NSNumber *keyValue = (NSNumber *)[change objectForKey: NSKeyValueChangeNewKey];
     
     if ([ProductionLineRunMetrics didSaveSuccessfully: keyValue]) {
-        NSLog(@"%@", change);
+        NSLog(@"Save successful!");
     }
 }
 

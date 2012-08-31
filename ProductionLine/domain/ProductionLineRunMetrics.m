@@ -1,4 +1,5 @@
 #import "ProductionLineRunMetrics.h"
+#import "Environment.h"
 
 @implementation ProductionLineRunMetrics
 
@@ -18,7 +19,7 @@
 }
 
 +(BOOL) didSaveSuccessfully: (NSNumber *) keyValue {
-    return (([keyValue intValue] == kFail));
+    return (([keyValue intValue] == kSuccess));
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)theResponse {
@@ -46,6 +47,9 @@
 }
 
 -(BOOL)saveWithError:(NSError **) outError {
+    Environment *myEnvironment = [Environment sharedInstance];
+    NSString *apiURL = myEnvironment.myApiURL;
+
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://localhost:9393/productionline/run"]];
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody: [[line toJSON] dataUsingEncoding:NSUTF8StringEncoding]];

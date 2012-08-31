@@ -42,6 +42,8 @@
 		8D6721AC15F072FB00A357DE /* StationChangeMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6721AB15F072FB00A357DE /* StationChangeMetrics.m */; };
 		8D6721AF15F07C9700A357DE /* ProductionLineRunMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6721AE15F07C9600A357DE /* ProductionLineRunMetrics.m */; };
 		8D6721B415F0A32100A357DE /* FlashMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6721B315F0A32100A357DE /* FlashMessageView.m */; };
+		ABB3E326FF2487580F915800 /* Environment.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB3EA13F5D4522635F79C15 /* Environment.m */; };
+		ABB3E528E7CC0C6AFFCF3C3D /* Environments.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABB3EDC1EA7C2F2290CFFBC2 /* Environments.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +94,9 @@
 		8D6721AE15F07C9600A357DE /* ProductionLineRunMetrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductionLineRunMetrics.m; path = domain/ProductionLineRunMetrics.m; sourceTree = "<group>"; };
 		8D6721B215F0A32100A357DE /* FlashMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlashMessageView.h; path = views/FlashMessageView.h; sourceTree = "<group>"; };
 		8D6721B315F0A32100A357DE /* FlashMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlashMessageView.m; path = views/FlashMessageView.m; sourceTree = "<group>"; };
+		ABB3E61BF642BF5F39ED6E97 /* Environment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Environment.h; sourceTree = "<group>"; };
+		ABB3EA13F5D4522635F79C15 /* Environment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Environment.m; sourceTree = "<group>"; };
+		ABB3EDC1EA7C2F2290CFFBC2 /* Environments.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Environments.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +143,8 @@
 		8D27B71815DCDBEA00C6C8D8 /* ProductionLine */ = {
 			isa = PBXGroup;
 			children = (
+				ABB3E61BF642BF5F39ED6E97 /* Environment.h */,
+				ABB3EA13F5D4522635F79C15 /* Environment.m */,
 				8D67218715E76B2B00A357DE /* external */,
 				8D9CE82515E22911002D410A /* views */,
 				8D561BF115DE45E7008E98DC /* controllers */,
@@ -154,6 +161,7 @@
 		8D27B71915DCDBEA00C6C8D8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				ABB3EDC1EA7C2F2290CFFBC2 /* Environments.plist */,
 				8D27B71A15DCDBEA00C6C8D8 /* ProductionLine-Info.plist */,
 				8D27B71B15DCDBEA00C6C8D8 /* InfoPlist.strings */,
 				8D27B71E15DCDBEA00C6C8D8 /* main.m */,
@@ -306,6 +314,7 @@
 				8D67217515E768B600A357DE /* second@2x.png in Resources */,
 				8D67217615E768B600A357DE /* thumbs_000614-blue-chrome-rain-icon-media-a-media22-arrow-forward1.png in Resources */,
 				8D67217715E768B600A357DE /* thumbs_000618-blue-chrome-rain-icon-media-a-media26-arrows-skip-forward.png in Resources */,
+				ABB3E528E7CC0C6AFFCF3C3D /* Environments.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +335,7 @@
 				8D6721AC15F072FB00A357DE /* StationChangeMetrics.m in Sources */,
 				8D6721AF15F07C9700A357DE /* ProductionLineRunMetrics.m in Sources */,
 				8D6721B415F0A32100A357DE /* FlashMessageView.m in Sources */,
+				ABB3E326FF2487580F915800 /* Environment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
