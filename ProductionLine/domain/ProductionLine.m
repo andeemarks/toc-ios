@@ -88,7 +88,11 @@
 }
 
 -(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id) metrics change: (NSDictionary *) change context: (void *) context {
-    NSLog(@"%@", change);
+    NSNumber *keyValue = (NSNumber *)[change objectForKey: NSKeyValueChangeNewKey];
+    
+    if ([ProductionLineRunMetrics didSaveSuccessfully: keyValue]) {
+        NSLog(@"%@", change);
+    }
 }
 
 -(NSString *)toJSON {

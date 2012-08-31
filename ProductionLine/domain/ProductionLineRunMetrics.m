@@ -19,10 +19,14 @@
     if (self) {
         self.response = [NSMutableData alloc];
         self.line = theLine;
-        self.saveSuccessful = FALSE;
+        self.saveSuccessful = kUndefined;
     }
     
     return self;    
+}
+
++(BOOL) didSaveSuccessfully: (NSNumber *) keyValue {
+    return (([keyValue intValue] == kFail));
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)theResponse {
@@ -38,7 +42,7 @@
     NSString *saved_run_id = [json objectForKey:@"_id"];
     NSLog(@"Successfully saved run.  ID = %@", saved_run_id);
 
-    self.saveSuccessful = TRUE;
+    self.saveSuccessful = kSuccess;
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
@@ -46,7 +50,7 @@
           [error localizedDescription],
           [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
 
-    self.saveSuccessful = FALSE;
+    self.saveSuccessful = kFail;
 }
 
 -(BOOL)saveWithError:(NSError **) outError {
