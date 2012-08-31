@@ -14,6 +14,7 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/NSURLRequest.h>
 #import <Foundation/NSURLConnection.h>
+#import "FlashMessageView.h"
 
 @implementation ProductionLineController
 
@@ -219,6 +220,9 @@
     }
     
     [line completeRun];
+
+    FlashMessageView *flash = [[FlashMessageView alloc] initWithMessage: @"Error saving run data" dismissAfter: 3];
+    [flash show];    
 }
 
 @end
