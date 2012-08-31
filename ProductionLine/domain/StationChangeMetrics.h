@@ -11,7 +11,6 @@
 @interface StationChangeMetrics : NSObject
 
 -(id) init;
--(NSString *) formattedForDisplay;
 
 @property int added;
 @property int removed;
