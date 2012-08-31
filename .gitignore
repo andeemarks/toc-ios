@@ -16,4 +16,4 @@ profile
 *.moved-aside
 Breakpoints.xcbkptlist
 .DS_Store
-
+.idea
