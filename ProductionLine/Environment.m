@@ -47,24 +47,4 @@ static Environment *sharedInstance = nil;
     }
 }
 
-- (NSUInteger) retainCount
-{
-    return NSUIntegerMax;
-}
-
-- (void) release
-{
-    // Do Nada
-}
-
-- (id) autorelease
-{
-    return self;
-}
-
-- (id) retain
-{
-    return self;
-}
-
 @end

@@ -2,15 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <Key>Development</Key>
+    <key>Debug</key>
     <dict>
-        <Key>api-url</Key>
-        <String>http://localhost:9393</String>
+        <key>api-url</key>
+        <string>http://localhost:9393</string>
     </dict>
-    <Key>Test</Key>
+    <key>Test</key>
     <dict>
-        <Key>api-url</Key>
-        <String>http://public-url</String>
+        <key>api-url</key>
+        <string>http://public-url</string>
     </dict>
 </dict>
 </plist>

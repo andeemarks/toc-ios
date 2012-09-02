@@ -49,8 +49,8 @@
 -(BOOL)saveWithError:(NSError **) outError {
     Environment *myEnvironment = [Environment sharedInstance];
     NSString *apiURL = myEnvironment.myApiURL;
-
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://localhost:9393/productionline/run"]];
+    NSString *fullAPIURL = [NSString stringWithFormat: @"%@/productionline/run", apiURL];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString: fullAPIURL]];
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody: [[line toJSON] dataUsingEncoding:NSUTF8StringEncoding]];
     
