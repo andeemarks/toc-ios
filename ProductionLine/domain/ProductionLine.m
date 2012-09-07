@@ -83,19 +83,24 @@
     NSNumber *keyValue = (NSNumber *)[change objectForKey: NSKeyValueChangeNewKey];
     
     if ([ProductionLineRunMetrics didSaveSuccessfully: keyValue]) {
-        NSLog(@"Save successful!");
+        DLog(@"Save successful!");
+    } else {
+        DLog(@"Save failed!");
     }
 }
 
 -(NSString *)toJSON {
-    NSMutableString *json = [NSMutableString stringWithFormat: @"{\"number_of_stations\" : %i, \"initial_inventory_size\" : %i, \"cycle_count\" : %i", 
-            [self numberOfStations], 
-            [self inventory], 
-            [self cycleCount]];
+    NSMutableString *json = [NSMutableString stringWithFormat:@"{%@, %@, %@",
+                    [self intToJSON:[self numberOfStations] withName:@"number_of_stations"],
+                    [self intToJSON:[self inventory] withName:@"initial_inventory_size"],
+                    [self intToJSON:[self cycleCount] withName:@"cycle_count"]];
 
     [json appendString: @", \"stations\" : ["];
     for (Station *station in stationData) {
-        [json appendFormat: @"{\"number\": %i, \"score\": %.1f, \"size\": %i} ", [station number], [station score], [station size]];
+        [json appendFormat: @"{%@, \"score\": %.1f, %@} ",
+                        [self intToJSON:[station number] withName:@"number"],
+                        [station score],
+                        [self intToJSON:[station size] withName:@"size"]];
         [json appendFormat: (station == [stationData lastObject]) ? @"" : @", "];
     }
     [json appendString: @"]}"];
@@ -103,4 +108,7 @@
     return json;
 }
 
+-(NSString *)intToJSON:(int)value withName: (NSString *) name {
+    return [NSString stringWithFormat: @"\"%@\" : %i", name, value];
+}
 @end

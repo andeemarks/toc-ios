@@ -23,7 +23,13 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)theResponse {
-    NSLog(@"Received response status code %i", [(NSHTTPURLResponse *)theResponse statusCode]);
+    int responseStatus = [(NSHTTPURLResponse *)theResponse statusCode];
+    DLog(@"Received response status code %i", responseStatus);
+    if (responseStatus == 201) {
+        self.saveSuccessful = kSuccess;
+    } else {
+        self.saveSuccessful = kFail;
+    }
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
@@ -31,15 +37,15 @@
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:response options:kNilOptions error:nil];
-    NSString *saved_run_id = [json objectForKey:@"_id"];
-    NSLog(@"Successfully saved run.  ID = %@", saved_run_id);
-
-    self.saveSuccessful = kSuccess;
+    if (self.saveSuccessful == kSuccess) {
+        NSDictionary* json = [NSJSONSerialization JSONObjectWithData:response options:kNilOptions error:nil];
+        NSString *saved_run_id = [json objectForKey:@"_id"];
+        DLog(@"Successfully saved run.  ID = %@", saved_run_id);
+    }
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    NSLog(@"Connection failed! Error - %@ %@",
+    DLog(@"Connection failed! Error - %@ %@",
           [error localizedDescription],
           [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
 
