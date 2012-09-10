@@ -25,9 +25,20 @@
 }
 
 -(void)drawRect:(CGRect)rect {
+    [self showSizeAsRectWithin: rect];
+}
+
+- (void)showSizeAsRectWithin: (CGRect) rect {
     CGContextRef ctx = UIGraphicsGetCurrentContext();
-    CGContextSetRGBFillColor(ctx, 0.0, 0.0, 1.0, 1.0);
-    CGContextFillRect(ctx, CGRectMake(15, 0, size.text.floatValue, 20));
+    CGRect sizeBar = CGRectMake(15, 0, size.text.floatValue, rect.size.height);
+
+    CGColorRef borderColour = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:1.0].CGColor;
+
+    CGRect border = CGRectInset(sizeBar, 1.0, 1.0);
+
+    CGContextSetStrokeColorWithColor(ctx, borderColour);
+    CGContextSetLineWidth(ctx, 1.0);
+    CGContextStrokeRect(ctx, border);
 }
 
 - (void)updateFromStation:(Station *)station previousStation:(Station *)previousStation {

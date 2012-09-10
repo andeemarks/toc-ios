@@ -78,20 +78,16 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [self findCellForPath: indexPath];
+    StationStatusCell *cell = [self findCellForPath: indexPath];
     
     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     int rowIndex = [indexPath indexAtPosition: 1];
     Station *station = [line stationAtIndex: rowIndex];
     Station *previousStation = [line getSourceStationForStationId: rowIndex];
-                        
-    [self updateCell: (StationStatusCell*) cell fromStation: station previousStation: previousStation];
+
+    [cell updateFromStation: station previousStation: previousStation];
 
     return cell;
-}
-
-- (void) updateCell:(StationStatusCell *) cell fromStation:(Station *) station previousStation: (Station *) previousStation {
-    [cell updateFromStation: station previousStation: previousStation];
 }
 
 #pragma mark Header Stuff
