@@ -12,8 +12,7 @@
 
 
 - (void) addLabel: (NSString *) text startingAtXPos: (NSInteger) startXPos {
-    UILabel *label = [[UILabel alloc]
-            initWithFrame:CGRectMake(startXPos, 0, 200, self.frame.size.height)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(startXPos, 0, 200, [StationStatusHeaderView HEIGHT])];
 
     label.text = text;
     label.backgroundColor = [UIColor whiteColor];
@@ -24,17 +23,21 @@
 }
 
 - (id)initWithWidth: (int) width {
-    self = [super initWithFrame:CGRectMake(0, 0, width, 20)];
+    DLog(@"Header width %d", width);
+    self = [super initWithFrame:CGRectMake(0, 0, width, [StationStatusHeaderView HEIGHT])];
     if (self) {
         [self addLabel:@"#" startingAtXPos:0];
-        [self addLabel:@"Roll" startingAtXPos:130];
         [self addLabel:@"Size" startingAtXPos:15];
-        [self addLabel:@"Score" startingAtXPos:230];
+        [self addLabel:@"Roll" startingAtXPos:130];
         [self addLabel:@"Changes" startingAtXPos:160];
+        [self addLabel:@"Score" startingAtXPos:230];
     }
 
     return self;
 }
 
++ (int)HEIGHT {
+    return 20;
+}
 
 @end

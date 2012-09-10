@@ -98,7 +98,7 @@
 }
 
 -(float)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return  20.0;
+    return  [StationStatusHeaderView HEIGHT];
 }
 
 #pragma mark App Logic

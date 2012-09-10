@@ -11,5 +11,5 @@
 @interface StationStatusHeaderView : UIView
 
 - (id)initWithWidth: (int) width;
-
++ (int)HEIGHT;
 @end
