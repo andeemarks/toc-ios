@@ -7,6 +7,7 @@
 #import <Foundation/NSURLRequest.h>
 #import <Foundation/NSURLConnection.h>
 #import "FlashMessageView.h"
+#import "StationStatusHeaderView.h"
 
 @implementation ProductionLineController
 
@@ -26,7 +27,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self retreiveSetup];
+    [self retrieveSetup];
     
     [stationTable reloadData];
     [playButton setEnabled: TRUE];
@@ -78,7 +79,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    StationStatusCell *cell = [self findCellForPath: indexPath];
+    StationStatusCell *cell = (StationStatusCell *) [self findCellForPath: indexPath];
     
     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     int rowIndex = [indexPath indexAtPosition: 1];
@@ -93,48 +94,7 @@
 #pragma mark Header Stuff
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *headerView = [[UIView alloc] 
-                          initWithFrame:CGRectMake(0,0,tableView.frame.size.width,20)];
-    
-    [self addStationLabelToView: headerView];
-    [self addDiceLabelToView: headerView];
-    [self addSizeLabelToView: headerView];
-    [self addChangesLabelToView: headerView];
-    [self addScoreLabelToView: headerView];
-    
-    return headerView;
-}
-
-- (void) addLabel: (NSString *) text toView: (UIView *)view startingAtXPos: (NSInteger) startXPos {
-    UILabel *label = [[UILabel alloc] 
-                      initWithFrame:CGRectMake(startXPos, 0, 200, view.frame.size.height)];
-    
-    label.text = text;
-    label.backgroundColor = [UIColor whiteColor];
-    label.textColor = [UIColor blueColor];
-    label.font = [UIFont fontWithName:@"Helvetica" size: 12.0]; 
-    
-    [view addSubview:label];
-}
-
-- (void) addStationLabelToView: (UIView *) headerView {
-    [self addLabel: @"#" toView: headerView startingAtXPos: 0];
-}
-
-- (void) addDiceLabelToView: (UIView *) headerView {
-    [self addLabel: @"Roll" toView: headerView startingAtXPos: 130];
-}
-
-- (void) addSizeLabelToView: (UIView *) headerView {
-    [self addLabel: @"Size" toView: headerView startingAtXPos: 15];
-}
-
-- (void) addScoreLabelToView: (UIView *) headerView {
-    [self addLabel: @"Score" toView: headerView startingAtXPos: 230];
-}
-
-- (void) addChangesLabelToView: (UIView *) headerView {
-    [self addLabel: @"Changes" toView: headerView startingAtXPos: 160];
+    return [[StationStatusHeaderView alloc] initWithWidth: tableView.frame.size.width];
 }
 
 -(float)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -143,7 +103,7 @@
 
 #pragma mark App Logic
 
-- (void)retreiveSetup {
+- (void)retrieveSetup {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     
     int stationCount = [prefs integerForKey:@"stationCount"];
