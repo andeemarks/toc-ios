@@ -91,16 +91,16 @@
 
 -(NSString *)toJSON {
     NSMutableString *json = [NSMutableString stringWithFormat:@"{%@, %@, %@",
-                    [self intToJSON:[self numberOfStations] withName:@"number_of_stations"],
-                    [self intToJSON:[self inventory] withName:@"initial_inventory_size"],
-                    [self intToJSON:[self cycleCount] withName:@"cycle_count"]];
+                    [ProductionLine intToJSON:[self numberOfStations] withName:@"number_of_stations"],
+                    [ProductionLine intToJSON:[self inventory] withName:@"initial_inventory_size"],
+                    [ProductionLine intToJSON:[self cycleCount] withName:@"cycle_count"]];
 
     [json appendString: @", \"stations\" : ["];
     for (Station *station in stationData) {
         [json appendFormat: @"{%@, \"score\": %.1f, %@} ",
-                        [self intToJSON:[station number] withName:@"number"],
+                        [ProductionLine intToJSON:[station number] withName:@"number"],
                         [station score],
-                        [self intToJSON:[station size] withName:@"size"]];
+                        [ProductionLine intToJSON:[station size] withName:@"size"]];
         [json appendFormat: (station == [stationData lastObject]) ? @"" : @", "];
     }
     [json appendString: @"]}"];
@@ -108,7 +108,7 @@
     return json;
 }
 
--(NSString *)intToJSON:(int)value withName: (NSString *) name {
++(NSString *)intToJSON:(int)value withName: (NSString *) name {
     return [NSString stringWithFormat: @"\"%@\" : %i", name, value];
 }
 @end
