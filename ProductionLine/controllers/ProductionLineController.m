@@ -91,14 +91,7 @@
 }
 
 - (void) updateCell:(StationStatusCell *) cell fromStation:(Station *) station previousStation: (Station *) previousStation {
-    cell.number.text = [NSString stringWithFormat: @"%d", [station number]];
-    cell.size.text =   [NSString stringWithFormat: @"%d", [station size]];
-    cell.score.text =  [NSString stringWithFormat: @"%.1f", [station score]];
-    cell.changes.text =[station recentChanges];
-    
-    UIImageView *imv = [[UIImageView alloc] initWithFrame:CGRectMake(130, 0, 20, 20)];
-    imv.image = [UIImage imageNamed:[NSString stringWithFormat: @"Dice%d.png", [previousStation dice]]];
-    [cell.contentView addSubview:imv];
+    [cell updateFromStation: station previousStation: previousStation];
 }
 
 #pragma mark Header Stuff

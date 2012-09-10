@@ -1,4 +1,5 @@
 #import "StationStatusCell.h"
+#import "Station.h"
 
 @implementation StationStatusCell
 
@@ -29,4 +30,15 @@
     CGContextFillRect(ctx, CGRectMake(15, 0, size.text.floatValue, 20));
 }
 
+- (void)updateFromStation:(Station *)station previousStation:(Station *)previousStation {
+    self.number.text = [NSString stringWithFormat: @"%d", [station number]];
+    self.size.text =   [NSString stringWithFormat: @"%d", [station size]];
+    self.score.text =  [NSString stringWithFormat: @"%.1f", [station score]];
+    self.changes.text =[station recentChanges];
+
+    UIImageView *imv = [[UIImageView alloc] initWithFrame:CGRectMake(130, 0, 20, 20)];
+    imv.image = [UIImage imageNamed:[NSString stringWithFormat: @"Dice%d.png", [previousStation dice]]];
+    [self.contentView addSubview:imv];
+
+}
 @end
