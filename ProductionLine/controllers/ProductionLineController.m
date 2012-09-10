@@ -58,12 +58,10 @@
     return [line numberOfStations];
 }
 
-- (UITableViewCell *) findCellForPath:(NSIndexPath *) indexPath {
-    NSString *cellId = [NSString stringWithFormat:@"%d", [indexPath indexAtPosition:1] + 1];
-    
-    UITableViewCell *cell = [stationTable dequeueReusableCellWithIdentifier:cellId];
+- (UITableViewCell *) findCell {
+    UITableViewCell *cell = [stationTable dequeueReusableCellWithIdentifier:@"cell"];
     if (cell == nil) {
-        //Load custom cell from NIB file
+        DLog(@"Loading cell from NIB");
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"StationStatusCell" owner:self options:NULL];
         cell = (StationStatusCell *) [nib objectAtIndex:0];
     }
@@ -71,7 +69,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    StationStatusCell *cell = (StationStatusCell *) [self findCellForPath: indexPath];
+    StationStatusCell *cell = (StationStatusCell *) [self findCell];
     
     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     int rowIndex = [indexPath indexAtPosition: 1];

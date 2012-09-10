@@ -22,7 +22,6 @@
 }
 
 - (id)initWithWidth: (int) width {
-    DLog(@"Header width %d", width);
     self = [super initWithFrame:CGRectMake(0, 0, width, [StationStatusHeaderView HEIGHT])];
     if (self) {
         [self addLabel:@"#" startingAtXPos:0];
