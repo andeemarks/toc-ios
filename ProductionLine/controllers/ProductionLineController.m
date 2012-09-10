@@ -78,7 +78,6 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    NSLog(@"cellForRowAtIndexPath");
     UITableViewCell *cell = [self findCellForPath: indexPath];
     
     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
@@ -97,16 +96,9 @@
     cell.score.text =  [NSString stringWithFormat: @"%.1f", [station score]];
     cell.changes.text =[station recentChanges];
     
-    UIImageView *imv = [[UIImageView alloc] initWithFrame:CGRectMake(80, 0, 20, 20)];
+    UIImageView *imv = [[UIImageView alloc] initWithFrame:CGRectMake(130, 0, 20, 20)];
     imv.image = [UIImage imageNamed:[NSString stringWithFormat: @"Dice%d.png", [previousStation dice]]];
     [cell.contentView addSubview:imv];
-    
-//    CGRect sizeBar = CGRectMake(0, 0, [station size], 20);
-//    UIView *sizeBarView = [[UIView alloc] initWithFrame: sizeBar];
-//    [cell setNeedsDisplay];
-//    [[UIColor blueColor] set]; 
-//	UIRectFill(sizeBar);
-//    [cell.contentView addSubview: sizeBarView];
 }
 
 #pragma mark Header Stuff
@@ -137,15 +129,15 @@
 }
 
 - (void) addStationLabelToView: (UIView *) headerView {
-    [self addLabel: @"Station" toView: headerView startingAtXPos: 0];
+    [self addLabel: @"#" toView: headerView startingAtXPos: 0];
 }
 
 - (void) addDiceLabelToView: (UIView *) headerView {
-    [self addLabel: @"Roll" toView: headerView startingAtXPos: 80];
+    [self addLabel: @"Roll" toView: headerView startingAtXPos: 130];
 }
 
 - (void) addSizeLabelToView: (UIView *) headerView {
-    [self addLabel: @"Size" toView: headerView startingAtXPos: 130];
+    [self addLabel: @"Size" toView: headerView startingAtXPos: 15];
 }
 
 - (void) addScoreLabelToView: (UIView *) headerView {
