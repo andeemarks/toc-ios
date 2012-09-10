@@ -12,4 +12,5 @@
 
 - (id)initWithWidth: (int) width;
 + (int)HEIGHT;
+
 @end

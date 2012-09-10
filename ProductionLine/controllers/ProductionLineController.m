@@ -1,11 +1,5 @@
 #import "ProductionLineController.h"
 #import "StationStatusCell.h"
-#import "Station.h"
-#import "ProductionLine.h"
-#import <stdlib.h>
-#import <UIKit/UIKit.h>
-#import <Foundation/NSURLRequest.h>
-#import <Foundation/NSURLConnection.h>
 #import "FlashMessageView.h"
 #import "StationStatusHeaderView.h"
 
@@ -52,8 +46,6 @@
             interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown );
 }
 
-#pragma mark Table Stuff
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 20.0;
 }
@@ -91,8 +83,6 @@
     return cell;
 }
 
-#pragma mark Header Stuff
-
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     return [[StationStatusHeaderView alloc] initWithWidth: tableView.frame.size.width];
 }
@@ -100,8 +90,6 @@
 -(float)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return  [StationStatusHeaderView HEIGHT];
 }
-
-#pragma mark App Logic
 
 - (void)retrieveSetup {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
