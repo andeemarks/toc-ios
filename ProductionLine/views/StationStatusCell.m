@@ -41,14 +41,14 @@
     CGContextStrokeRect(ctx, border);
 }
 
-- (void)updateFromStation:(Station *)station previousStation:(Station *)previousStation {
+- (void)updateFromStation:(Station *)station afterDiceRollOf:(int) diceRoll {
     self.number.text = [NSString stringWithFormat: @"%d", [station number]];
     self.size.text =   [NSString stringWithFormat: @"%d", [station size]];
     self.score.text =  [NSString stringWithFormat: @"%.1f", [station score]];
     self.changes.text =[station recentChanges];
 
     UIImageView *imv = [[UIImageView alloc] initWithFrame:CGRectMake(130, 0, 20, 20)];
-    imv.image = [UIImage imageNamed:[NSString stringWithFormat: @"Dice%d.png", [previousStation dice]]];
+    imv.image = [UIImage imageNamed:[NSString stringWithFormat: @"Dice%d.png", diceRoll]];
     [self.contentView addSubview:imv];
 
 }

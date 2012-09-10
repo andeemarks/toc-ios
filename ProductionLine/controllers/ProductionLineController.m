@@ -85,7 +85,7 @@
     Station *station = [line stationAtIndex: rowIndex];
     Station *previousStation = [line getSourceStationForStationId: rowIndex];
 
-    [cell updateFromStation: station previousStation: previousStation];
+    [cell updateFromStation: station afterDiceRollOf: [previousStation dice]];
 
     return cell;
 }

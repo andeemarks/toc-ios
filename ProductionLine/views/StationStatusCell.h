@@ -9,6 +9,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *score;
 @property (strong, nonatomic) IBOutlet UILabel *changes;
 
-- (void)updateFromStation:(Station *)station previousStation:(Station *)previousStation;
+- (void)updateFromStation:(Station *)station afterDiceRollOf:(int) diceRoll;
 
 @end
