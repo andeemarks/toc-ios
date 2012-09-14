@@ -44,6 +44,7 @@
 		8D6721B415F0A32100A357DE /* FlashMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6721B315F0A32100A357DE /* FlashMessageView.m */; };
 		ABB3E326FF2487580F915800 /* Environment.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB3EA13F5D4522635F79C15 /* Environment.m */; };
 		ABB3E528E7CC0C6AFFCF3C3D /* Environments.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABB3EDC1EA7C2F2290CFFBC2 /* Environments.plist */; };
+		ABB3E8538C9956DE25F86C46 /* ProductionLineTest.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB3E07C752E5CF1A1F59810 /* ProductionLineTest.m */; };
 		ABB3EA809B67A1B54B457380 /* StationStatusHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB3E958872C757DED1CCC73 /* StationStatusHeaderView.m */; };
 /* End PBXBuildFile section */
 
@@ -95,10 +96,12 @@
 		8D6721AE15F07C9600A357DE /* ProductionLineRunMetrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductionLineRunMetrics.m; path = domain/ProductionLineRunMetrics.m; sourceTree = "<group>"; };
 		8D6721B215F0A32100A357DE /* FlashMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlashMessageView.h; path = views/FlashMessageView.h; sourceTree = "<group>"; };
 		8D6721B315F0A32100A357DE /* FlashMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlashMessageView.m; path = views/FlashMessageView.m; sourceTree = "<group>"; };
+		ABB3E07C752E5CF1A1F59810 /* ProductionLineTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProductionLineTest.m; path = ProductionLineTest.m; sourceTree = SOURCE_ROOT; };
 		ABB3E61BF642BF5F39ED6E97 /* Environment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Environment.h; sourceTree = "<group>"; };
 		ABB3E958872C757DED1CCC73 /* StationStatusHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StationStatusHeaderView.m; path = views/StationStatusHeaderView.m; sourceTree = "<group>"; };
 		ABB3E98ED9E7A5EA51C92493 /* StationStatusHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StationStatusHeaderView.h; path = views/StationStatusHeaderView.h; sourceTree = "<group>"; };
 		ABB3EA13F5D4522635F79C15 /* Environment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Environment.m; sourceTree = "<group>"; };
+		ABB3ED22A4FF8C8B0C870009 /* ProductionLineTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProductionLineTest.h; path = ProductionLineTest.h; sourceTree = SOURCE_ROOT; };
 		ABB3EDC1EA7C2F2290CFFBC2 /* Environments.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Environments.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,6 +125,7 @@
 				8D27B71815DCDBEA00C6C8D8 /* ProductionLine */,
 				8D27B71115DCDBEA00C6C8D8 /* Frameworks */,
 				8D27B70F15DCDBEA00C6C8D8 /* Products */,
+				ABB3EA8860068828F94F25E4 /* Test */,
 			);
 			sourceTree = "<group>";
 		};
@@ -246,6 +250,23 @@
 			name = views;
 			sourceTree = "<group>";
 		};
+		ABB3E46794A95CCE23B8833D /* domain */ = {
+			isa = PBXGroup;
+			children = (
+				ABB3E07C752E5CF1A1F59810 /* ProductionLineTest.m */,
+				ABB3ED22A4FF8C8B0C870009 /* ProductionLineTest.h */,
+			);
+			path = domain;
+			sourceTree = "<group>";
+		};
+		ABB3EA8860068828F94F25E4 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				ABB3E46794A95CCE23B8833D /* domain */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -342,6 +363,7 @@
 				8D6721B415F0A32100A357DE /* FlashMessageView.m in Sources */,
 				ABB3E326FF2487580F915800 /* Environment.m in Sources */,
 				ABB3EA809B67A1B54B457380 /* StationStatusHeaderView.m in Sources */,
+				ABB3E8538C9956DE25F86C46 /* ProductionLineTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
